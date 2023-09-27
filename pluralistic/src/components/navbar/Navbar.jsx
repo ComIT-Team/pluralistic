@@ -1,7 +1,6 @@
 
-//import "./Navbar.css";
-//import logo from '../../assets/img20pl.svg';
-//import { MenuData } from './MenuData';
+
+import { Link } from "react-router-dom"
 const Navbar = () => {
   return (
     <header className='container mx-auto px-4 py-6 flex items-center justify-between no-underline'>
@@ -57,7 +56,7 @@ const Navbar = () => {
         <nav>
           <ul>
             <li>
-<a href='#' className='rounded-full px-3 py-2 font-semibold bg-white bg-opacity-10 flex items-center group'>
+<Link to='/login' className='rounded-full px-3 py-2 font-semibold bg-white bg-opacity-10 flex items-center group'>
   <span className='mr-2 text-white'>Sign in</span>
   <svg className="stroke-current stroke-2 
   " width="10" height="10" fill="none" viewBox="0 0 10 10" aria-hidden="true">
@@ -68,7 +67,7 @@ const Navbar = () => {
     
   </g>
 </svg>
-</a>
+</Link>
             </li>
           </ul>
         </nav>
