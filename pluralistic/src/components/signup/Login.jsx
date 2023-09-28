@@ -2,11 +2,19 @@
 import {Link} from 'react-router-dom'
 
 import SignUp from './SignUp'
+import { useState } from 'react'
 const Login = () => {
-
+const [input, setInput] = useState({email:"", password:""})
 
   const handleLoginClick =() =>{
     console.log('Hello from login')
+  }
+  const handleLoginSubmit =(e) =>{
+    e.preventDefault()
+    console.log('Hello from login')
+  }
+  const handleInput = (e) =>{
+setInput({...input, [e.target.name]: e.target.value})
   }
   return (
     <>
@@ -24,7 +32,7 @@ const Login = () => {
       </div>
 
     <div className="mb-12 md:mb-0 md:w-8/12 lg:w-5/12 xl:w-5/12 justify-center ">
-        <form>
+        <form onSubmit={handleLoginSubmit }>
           {/* <!--Sign in section--> */}
           <div
             className="flex flex-row items-center justify-center lg:justify-start">
@@ -92,9 +100,9 @@ const Login = () => {
 
           {/* <!-- Email input --> */}
           <div className="relative mb-6" data-te-input-wrapper-init>
-            <input
-              type="text"
-              className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            <input required
+              type="email" name="email" value={input.email} onChange={handleInput}
+              className="peer block min-h-[auto] w-full rounded border-sm bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-double transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
               id="exampleFormControlInput2"
               placeholder="Email address" />
             <label
@@ -106,9 +114,9 @@ const Login = () => {
 
           {/* <!-- Password input --> */}
           <div className="relative mb-6" data-te-input-wrapper-init>
-            <input
-              type="password"
-              className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            <input required
+              type="password" name="password" value={input.password} onChange={handleInput}
+              className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-double transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
               id="exampleFormControlInput22"
               placeholder="Password" />
             <label
@@ -134,13 +142,13 @@ const Login = () => {
             </div>
 
             {/* <!--Forgot password link--> */}
-            <a href="#!">Forgot password?</a>
+            <Link to="#" >Forgot password?</Link>
           </div>
 
           {/* <!-- Login button --> */}
           <div className="text-center lg:text-left">
             <button onClick={handleLoginClick}
-              type="button"
+              type="submit"
               className="inline-block rounded bg-primary px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
               data-te-ripple-init
               data-te-ripple-color="light">

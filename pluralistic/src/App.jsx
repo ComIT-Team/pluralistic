@@ -12,10 +12,10 @@ function App() {
 
   return (
     <>
-     
+     <div className='bg-gradient-to-br from-indigo-500 to-pink-700 via-blue-800 bg-no-repeat text-white'>
       <Router>
         <Navbar/>
-        <div>
+        <div className='container'>
 
         
 <Routes>
@@ -30,7 +30,7 @@ function App() {
         
         </div>
       </Router>
-       
+      </div>
       {/* <Navbar/>
       <Login/>
        */}
