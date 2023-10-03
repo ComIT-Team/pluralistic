@@ -102,33 +102,23 @@ setInput({...input, [e.target.name]: e.target.value})
           <div className="relative mb-6" data-te-input-wrapper-init>
             <input required
               type="email" name="email" value={input.email} onChange={handleInput}
-              className="peer block min-h-[auto] w-full rounded border-sm bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-double transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+              className="peer block min-h-[auto] w-full border-0 rounded px-3 py-[0.32rem] leading-[2.15] mb-3 outline-double outline-white text-white  focus:outline-none focus:ring-1 focus:ring-black focus:border-black placeholder-transparent bg-transparent"
               id="exampleFormControlInput2"
               placeholder="Email address" />
             <label
               htmlFor="exampleFormControlInput2"
-              className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+              className="absolute left-3 -top-3.5 text-white transition-all ease-out peer-placeholder-shown:text-base peer-placeholder-shown:text-neutral-500 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm"
               >Email address
             </label>
           </div>
 
           {/* <!-- Password input --> */}
-          {/* <div className="relative mb-6" data-te-input-wrapper-init>
-            <input required id="login-pass"
-              placeholder="abc"
-              type="password" name="password" value={input.password} onChange={handleInput}
-              className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-double placeholder-transparent  focus:placeholder:opacity-100  dark:text-neutral-600 dark:placeholder:text-neutral-200 "
-               />
-            <label
-              htmlFor="login-pass"
-              className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out  peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
-              >Password
-            </label>
-          </div> */}
+          
+            
 
           <div className="mt-10 relative">
-              <input id="password" type="password" name="password" className="peer block min-h-[auto] w-full border-sm rounded px-3 py-[0.32rem] leading-[2.15] outline-double border-gray-300 text-gray-900 placeholder-transparent bg-transparent focus:outline-none focus:border-rose-600" placeholder="Password" />
-              <label htmlFor="password" className="absolute left-3 -top-3.5 text-neutral-500 transition-all ease-out peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">Password</label>
+              <input id="password" type="password" name="password" className="peer block min-h-[auto] w-full border-0 rounded px-3 py-[0.32rem] leading-[2.15] mb-3 outline-double outline-white text-white  focus:outline-none focus:ring-1 focus:ring-black focus:border-black placeholder-transparent bg-transparent " placeholder="Password" />
+              <label htmlFor="password" className="absolute left-3 -top-3.5 text-white transition-all ease-out peer-placeholder-shown:text-base peer-placeholder-shown:text-neutral-500 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">Password</label>
             </div>
 
           <div className="mb-6 flex items-center justify-between">
