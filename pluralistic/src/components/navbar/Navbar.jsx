@@ -3,11 +3,11 @@
 import { Link } from "react-router-dom"
 import Login from "../signup/Login"
 import About from "../about/AboutUs"
-import Home from "../Home"
+
 const Navbar = () => {
   return (
     <header className='container mx-auto px-4 py-6 flex items-center justify-between no-underline'>
-<Link to='/' element={Home} className='font-bold text-white no-underline text-xl'>Pluralistic</Link>
+<h1 className='font-bold text-white no-underline text-xl'>Pluralistic</h1>
     <nav  >
     {/* <div className='container mx-auto px-4 py-6 flex items-center justify-between'>
         
