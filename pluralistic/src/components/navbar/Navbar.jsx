@@ -7,13 +7,14 @@ import About from "../about/AboutUs"
 
 import Products from '../Products'
 import { Link } from 'react-router-dom'
+import Home from "../Home"
 //import "./Navbar.css";
 //import logo from '../../assets/img20pl.svg';
 //import { MenuData } from './MenuData';
 const Navbar = () => {
   return (
     <header className='container mx-auto px-4 py-6 flex items-center justify-between no-underline'>
-<h1 className='font-bold text-white no-underline text-xl'>Pluralistic</h1>
+<Link to='/' element={Home}><h1 className='font-bold text-white no-underline text-xl'>Pluralistic</h1></Link>
     <nav  >
     {/* <div className='container mx-auto px-4 py-6 flex items-center justify-between'>
         
@@ -49,8 +50,8 @@ const Navbar = () => {
                
             </li>
             <li  className='relative group px-3 py-2'>
-              <button className='hover:opacity-50 curser-default'
-                onClick={Products}>Products</button>  
+             <Link to='/products' element={Products}><button className='hover:opacity-50 curser-default'
+                >Products</button>  </Link> 
                 <div className='absolute top-0 left-0 transition group-hover:translate-y-5 translate-y-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible duration-500 ease-in-out group-hover:transform z-50 min-w-[560px] transform'>
                   <div  className='relative top-6 p-6 bg-white rounded-xl shadow-xl w-full'>
                     <p></p>
