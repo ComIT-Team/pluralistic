@@ -6,7 +6,8 @@
 import Navbar from './components/navbar/Navbar';
 import Login from './components/signup/Login';
 import SignUp from './components/signup/SignUp';
-
+import Home from './components/Home';
+import Products from './components/Products';
 function App() {
  
 
@@ -19,9 +20,10 @@ function App() {
 
         
 <Routes>
-
+<Route  path='/' element={<Home/>}></Route>
 <Route  path='/login' element={<Login/>}></Route>
 <Route  path='/SignUp' element={<SignUp/>}></Route>
+<Route  path='/products' element={<Products/>}></Route>
         
        
 </Routes>
