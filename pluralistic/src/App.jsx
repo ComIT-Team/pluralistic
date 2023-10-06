@@ -1,30 +1,39 @@
 //import { useState, useEffect } from 'react';
 //import api from './api/axiosConfig';
 //import './App.css';
-//import {Routes, Route} from 'react-router-dom'
-import Home from "./components/Home";
-import Navbar from "./components/navbar/Navbar";
-// import Products from "./components/Products";
+ import { BrowserRouter as Router,Routes,  Route, } from 'react-router-dom';
+
+import Navbar from './components/navbar/Navbar';
+import Login from './components/signup/Login';
+import SignUp from './components/signup/SignUp';
 
 function App() {
+ 
+
   return (
     <>
-      <div>
-        {/* <Routes>
-        <Route path="/" element={<Home/>}></Route>
-        <Route path="/" element={<Navbar/>}>
-        </Route>
-       </Routes> */}
+     <div className='bg-gradient-to-br from-indigo-500 to-pink-700 via-blue-800 bg-no-repeat text-white'>
+      <Router>
+        <Navbar/>
+        <div className='container'>
+
+        
+<Routes>
+
+<Route  path='/login' element={<Login/>}></Route>
+<Route  path='/SignUp' element={<SignUp/>}></Route>
+        
+       
+</Routes>
+        
+      
+        
+        </div>
+      </Router>
       </div>
-      <div>
-        <Navbar />
-        <Home />
-        {/* <Router>
-          <Route path="/products" component={Products} />
-        </Router> */}
-      </div>
+      
     </>
-  );
+  )
 }
 
-export default App;
+export default App
