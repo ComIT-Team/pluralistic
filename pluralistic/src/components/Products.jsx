@@ -25,7 +25,7 @@ const Products = () => {
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-[30px] max-w-sm mx-auto md:max-w-none md:mx-0'>
           {data.map((item) => (
             <div key={item.id} className='m-6'>
-              <div className='border border-gray-400 h-[300px] mb-4 relative overflow-hidden group transition bg-zinc-50'>
+              <div className='border border-gray-400 h-[300px] mb-4 relative overflow-hidden group transition bg-zinc-50 rounded-xl'>
                 <div className='w-full h-full flex justify-center items-center'>
                   <div className='w-[200px] mx-auto flex justify-center items-center'>
                     <img
