@@ -7,6 +7,7 @@ import AddShoppingCartRoundedIcon from '@mui/icons-material/AddShoppingCartRound
 
 const Products = () => {
   const [data, setData] = useState([]);
+  
   useEffect(() => {
     fetchApi()
       .then((data) => {
@@ -18,9 +19,60 @@ const Products = () => {
   }, []);
 
   const { id, title, price, description, category, image, rating } = data;
+  // filter functions
+  // const [items, setItems] = useState(data)
+  const filterType =(cat) =>{
+    setData(
+      data.filter((item) => {
+        return item.category === cat
+      })
+    )
+  }
+
+
+  const priceType = (amount) =>{
+    setData(
+      data.filter((item) =>{
+        return item.price === amount
+      })
+    )
+  }
 
   return (
     <section className='py-4'>
+    {/* filter data */}
+    <div className='max-w-[1640px] m-auto px-4'>
+      {/* <h1 className='font-bold text-4xl text-center'>Items</h1> */}
+      <div className="flex flex-col lg:flex-row justify-between">
+
+        <div className="">
+        {/* filter by category */}
+            <p className='font-bold text-white'>Category:</p>
+            <div className='flex justify-between flex-wrap'>
+              <button onClick={()=> setData()} className='rounded-xl m-1 bg-white/60 p-1 border-red-600 text-red-600 hover:bg-red-600 hover:text-white'>All</button>
+              <button onClick={()=> filterType("men's clothing")} className='rounded-xl m-1 bg-white/60 p-1 border-red-600 text-red-600 hover:bg-red-600 hover:text-white'>Men's Clothing</button>
+              <button onClick={()=> filterType("women's clothing")} className='rounded-xl m-1 bg-white/60 p-1 border-red-600 text-red-600 hover:bg-red-600 hover:text-white'>Women's Clothing</button>
+              <button onClick={()=> filterType("jewelery")} className='rounded-xl m-1 bg-white/60 p-1 border-red-600 text-red-600 hover:bg-red-600 hover:text-white'>Jewellery</button>
+              <button onClick={()=> filterType("electronics")} className='rounded-xl m-1 bg-white/60 p-1 border-red-600 text-red-600 hover:bg-red-600 hover:text-white'>Electronics</button>
+            </div>
+        </div>
+        <div className="">
+      {/* filter by price */}
+            <p className='font-bold text-white'>By Price:</p>
+            <div className='flex justify-between flex-wrap'>
+                <button className='rounded-xl m-1 bg-white/60 p-1 border-red-600 text-red-600 hover:bg-red-600 hover:text-white'>Under $25</button>
+                <button className='rounded-xl m-1 bg-white/60 p-1 border-red-600 text-red-600 hover:bg-red-600 hover:text-white'>$25 to $50</button>
+                <button className='rounded-xl m-1 bg-white/60 p-1 border-red-600 text-red-600 hover:bg-red-600 hover:text-white'>$50 to $100</button>
+                <button className='rounded-xl m-1 bg-white/60 p-1 border-red-600 text-red-600 hover:bg-red-600 hover:text-white'>$100 to $200</button>
+                <button className='rounded-xl m-1 bg-white/60 p-1 border-red-600 text-red-600 hover:bg-red-600 hover:text-white'>$200 & above</button>
+            </div>
+            
+        </div>
+      </div>
+    </div>
+
+
+    {/* Actual data */}
       <div className='container mx-16'>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-[30px] max-w-sm mx-auto md:max-w-none md:mx-0'>
           {data.map((item) => (
@@ -54,8 +106,9 @@ const Products = () => {
                 <div className='text-sm capitalize text-gray-100 mb-1'>
                   {item.category}
                 </div>
-                <Link className='flex'>
-                  <AddShoppingCartRoundedIcon className='text-red-600'/>
+                <Link className='no-underline text-red-300 flex'>
+                <AddShoppingCartRoundedIcon className='p-1 text-red-600'/>
+                <button className='rounded-xl bg-rose-500/60 text-white p-1'>Add to Cart</button>  
                 </Link>
                 <Link className='no-underline text-zinc-50' to={`/product/${id}`}>
                   <h2 className='text-base font-semibold mb-1'>{item.title}</h2>
