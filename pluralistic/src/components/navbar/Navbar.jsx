@@ -8,23 +8,16 @@ import About from "../about/AboutUs"
 import Products from '../Products'
 import { Link } from 'react-router-dom'
 //import Home from "../Home"
-//import "./Navbar.css";
-
-//import { MenuData } from './MenuData';
 const Navbar = () => {
   return (
-    <header className='container mx-auto px-4 py-6 flex items-center justify-between no-underline'>
-    
+    <div className="w-full px-4  h-[56px]  bg-amazon_light text-white flex items-center justify-center">
 {/* <Link to='/' element={Home}><h1 className='font-bold text-white no-underline text-xl'>Pluralistic</h1></Link> */}
-    <nav className="grid grid-cols-3 gap-4  place-items-start "  >
-    <div className='container mx-auto px-4 py-0 flex self-start items-start '>
-        
-        </div>
-        <div className="self-start">
-        <ul className='  flex items-center justify-center font-semibold mx-auto px-4 py-[3em] whitespace-nowrap '>
+    <nav className="grid grid-cols-3 gap-4   "  >
+        <div className="">
+        <ul className=' flex items-center justify-center text-sm tracking-wide gap-2 mx-auto px-4 py-[3em] whitespace-nowrap '>
        
 
-            <li  className='relative px-3 py-2 group'>
+            <li  className='relative px-3 py-4 group'>
             <Link to="/AboutUs" element={About}>
                 <button className='hover:opacity-50 curser-default text-white'
                 >About-Us</button>
@@ -39,7 +32,7 @@ const Navbar = () => {
                 </Link>
             </li>
             <li  className='relative group px-3 py-2'>
-                <button className='hover:opacity-50 curser-default text-white'
+                <button className='hover:opacity-50 curser-default text-white '
                 >Seller LogIn</button>
                 <div className='absolute top-0 left-0 transition group-hover:translate-y-5 translate-y-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible duration-500 ease-in-out group-hover:transform z-50 min-w-[560px] transform'>
                   <div  className='relative top-6 p-6 bg-white rounded-xl shadow-xl w-full'>
@@ -50,7 +43,7 @@ const Navbar = () => {
                
             </li>
             <li  className='relative group px-3 py-2'>
-             <Link to='/products' element={Products}><button className='hover:opacity-50 curser-default text-white'
+             <Link to='/products' element={Products}><button className=' hover:opacity-50 curser-pointer text-white  '
                 >Products</button>  </Link> 
                 <div className='absolute top-0 left-0 transition group-hover:translate-y-5 translate-y-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible duration-500 ease-in-out group-hover:transform z-50 min-w-[560px] transform'>
                   <div  className='relative top-6 p-6 bg-white rounded-xl shadow-xl w-full'>
@@ -83,8 +76,8 @@ const Navbar = () => {
             </li>
           </ul>
         </nav>
+        </div>
     
-    </header>
   )
 }
 
