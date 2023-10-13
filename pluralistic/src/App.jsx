@@ -8,13 +8,15 @@ import Login from './components/signup/Login';
 import SignUp from './components/signup/SignUp';
 import Home from './components/Home';
 import Products from './components/Products';
+import Header from './components/header/Header';
 function App() {
  
 
   return (
     <>
-     <div className='bg-gradient-to-br from-indigo-500 to-pink-700 via-blue-800 bg-no-repeat text-white'>
+     <div className='bg-gradient-to-br from-indigo-500 to-pink-700 via-blue-800 bg-no-repeat text-white font-bodyFont'>
       <Router>
+          <Header />
         <Navbar/>
         <div className='container'>
 

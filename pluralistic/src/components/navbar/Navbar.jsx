@@ -7,18 +7,18 @@ import About from "../about/AboutUs"
 
 import Products from '../Products'
 import { Link } from 'react-router-dom'
-import Home from "../Home"
+//import Home from "../Home"
 //import "./Navbar.css";
-import logo from '../../assets/logo-transparent-svg.svg';
+
 //import { MenuData } from './MenuData';
 const Navbar = () => {
   return (
     <header className='container mx-auto px-4 py-6 flex items-center justify-between no-underline'>
+    
 {/* <Link to='/' element={Home}><h1 className='font-bold text-white no-underline text-xl'>Pluralistic</h1></Link> */}
     <nav className="grid grid-cols-3 gap-4  place-items-start "  >
     <div className='container mx-auto px-4 py-0 flex self-start items-start '>
-        <Link to='/' element={Home}>
-        <img src={logo} className='self-start mx-6 md:cursor-pointer flex-grow h-[8em] w-[10em] rounded-full  ' alt="logo"></img></Link>
+        
         </div>
         <div className="self-start">
         <ul className='  flex items-center justify-center font-semibold mx-auto px-4 py-[3em] whitespace-nowrap '>
