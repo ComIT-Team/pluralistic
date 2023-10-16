@@ -7,26 +7,19 @@ import About from "../about/AboutUs"
 
 import Products from '../Products'
 import { Link } from 'react-router-dom'
-import Home from "../Home"
-//import "./Navbar.css";
-//import logo from '../../assets/img20pl.svg';
-//import { MenuData } from './MenuData';
+//import Home from "../Home"
 const Navbar = () => {
   return (
-    <header className='container mx-auto px-4 py-6 flex items-center justify-between no-underline'>
-<Link to='/' element={Home}><h1 className='font-bold text-white no-underline text-xl'>Pluralistic</h1></Link>
-    <nav  >
-    {/* <div className='container mx-auto px-4 py-6 flex items-center justify-between'>
-        
-        <img src={logo} className='align-center mx-6 md:cursor-pointer h-24 w-16 rounded-full  ' alt="logo"></img>
-        </div> */}
-        
-        <ul className='flex items-center justify-center font-semibold'>
+    <div className="w-full px-4  h-[56px]  bg-amazon_light text-white flex items-center justify-center">
+{/* <Link to='/' element={Home}><h1 className='font-bold text-white no-underline text-xl'>Pluralistic</h1></Link> */}
+    <nav className="grid grid-cols-3 gap-4   "  >
+        <div className="">
+        <ul className=' flex items-center justify-center text-sm tracking-wide gap-2 mx-auto px-4 py-[3em] whitespace-nowrap '>
        
 
-            <li  className='relative px-3 py-2 group'>
+            <li  className='relative px-3 py-4 group'>
             <Link to="/AboutUs" element={About}>
-                <button className='hover:opacity-50 curser-default'
+                <button className='hover:opacity-50 curser-default text-white'
                 >About-Us</button>
             
                 <div className='absolute top-0 -left-48 transition group-hover:translate-y-5 translate-y-0 opacity-0 invisible group-hover:visible group-hover:opacity-100 duration-500 ease-in-out group-hover:transform z-50 min-w-[560px] transform bg-white'>
@@ -39,7 +32,7 @@ const Navbar = () => {
                 </Link>
             </li>
             <li  className='relative group px-3 py-2'>
-                <button className='hover:opacity-50 curser-default'
+                <button className='hover:opacity-50 curser-default text-white '
                 >Seller LogIn</button>
                 <div className='absolute top-0 left-0 transition group-hover:translate-y-5 translate-y-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible duration-500 ease-in-out group-hover:transform z-50 min-w-[560px] transform'>
                   <div  className='relative top-6 p-6 bg-white rounded-xl shadow-xl w-full'>
@@ -50,7 +43,7 @@ const Navbar = () => {
                
             </li>
             <li  className='relative group px-3 py-2'>
-             <Link to='/products' element={Products}><button className='hover:opacity-50 curser-default'
+             <Link to='/products' element={Products}><button className=' hover:opacity-50 curser-pointer text-white  '
                 >Products</button>  </Link> 
                 <div className='absolute top-0 left-0 transition group-hover:translate-y-5 translate-y-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible duration-500 ease-in-out group-hover:transform z-50 min-w-[560px] transform'>
                   <div  className='relative top-6 p-6 bg-white rounded-xl shadow-xl w-full'>
@@ -62,14 +55,14 @@ const Navbar = () => {
             </li>
         
         </ul>
-        
+        </div>
         
         </nav>
         <nav>
           <ul>
             <li>
-<Link to='/login' element={Login} className='rounded-full px-3 py-2 font-semibold bg-white bg-opacity-10 flex items-center group'>
-  <span className='mr-2 text-white'>Sign in</span>
+<Link to='/login' element={Login} className='rounded-full px-3 py-2 mt-0 font-semibold bg-white bg-opacity-10 flex items-center group text-white'>
+  <span className='mr-2 text-white whitespace-nowrap '>Sign in</span>
   <svg className="stroke-current stroke-2 
   " width="10" height="10" fill="none" viewBox="0 0 10 10" aria-hidden="true">
   <g fillRule="evenodd">
@@ -83,8 +76,8 @@ const Navbar = () => {
             </li>
           </ul>
         </nav>
+        </div>
     
-    </header>
   )
 }
 
