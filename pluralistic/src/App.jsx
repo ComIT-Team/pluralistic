@@ -8,6 +8,7 @@ import Home from './components/Home';
 import Products from './components/Products';
 import Header from './components/header/Header';
 import Banner from './components/about/Banner';
+import Footer from './components/footer/footer';
 function App() {
  
 
@@ -32,6 +33,7 @@ function App() {
       
         
         </div>
+     <Footer/>
       </Router>
       </div>
       

@@ -1,6 +1,6 @@
 
 import Slider from "react-slick";
-import { banner1, banner2, banner3, banner4, banner5 } from "../Images";
+import { banner1, banner2, banner3 } from "../Images";
 import { useState } from "react";
 const Banner = () => {
     const[doActive, setDoActive] = useState(0);
@@ -18,7 +18,7 @@ const Banner = () => {
             <div
               style={{
                 position: "absolute",
-                top:"54%",
+                top:"100%",
                 left:"45%",
                 transform:"translate(-50% -50%",
                 width:"210px",
@@ -75,10 +75,16 @@ const Banner = () => {
           <div>
             <img src={banner2} alt="img2" />
           </div>
-          
+
+          <div>
+            <img src={banner3} alt="img3" />
+          </div>
+          {/* <div>
+            <img src={banner4} alt="img4" />
+          </div>
           <div>
             <img src={banner5} alt="img5" />
-          </div>
+          </div> */}
         </Slider>
         </div>
       </div>
