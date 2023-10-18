@@ -19,7 +19,9 @@ const Banner = () => {
               style={{
                 position: "absolute",
                 top:"100%",
-                left:"45%",
+                left:"0",
+                right:"0",
+                margin:"0 auto",
                 transform:"translate(-50% -50%",
                 width:"210px",
               }}
@@ -62,7 +64,32 @@ const Banner = () => {
             >
               {i + 1}
             </div>
-          )
+          ),
+          responsive:[
+            {
+              breakpoint:576,
+              settings:{
+                dots: true,
+                appendDots:(dots)=>(
+                  <div
+                  style={{
+                    position:"absolute",
+                    top:"100%",
+                    left:"0",
+                    right:"0",
+                    margin:"0 auto",
+                    transform:"translate(-50% -50%)",
+                    width:"150px",
+                  }}>
+                    <ul style={{ width:"100%", display:"flex",
+              alignItems:"center",
+              justifyContent:"space-between"
+              }}> {dots} </ul>
+                  </div>
+                )
+              }
+            }
+          ]
       };
   return (
     <div className="w-full">
