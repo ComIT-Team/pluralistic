@@ -1,6 +1,6 @@
 //import Login from "../signup/Login"
 import About from "../about/AboutUs"
-import {motion} from "framer-motion"
+//import {motion} from "framer-motion"
 import MenuOpenOutlinedIcon from '@mui/icons-material/MenuOpenOutlined';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
@@ -21,13 +21,13 @@ if(e.target.contains(ref.current)){
     },[ref,sideBar])
   })
   return (
-    <div className="w-full px-4  h-[36px]  mt-1 bg-amazon_light text-white flex items-center ">
+    <div className="w-full px-4  h-[36px]  mt-1 bg-indigo-900 text-white flex items-center ">
 {/* <Link to='/' element={Home}><h1 className='font-bold text-white no-underline text-xl'>Pluralistic</h1></Link> */}
    
         
         <ul className=' flex items-center text-sm tracking-wide gap-2 pt-3'>
        
-            <li onClick={()=>setSideBar(true)} className=' headerHover flex items-center gap-1 '> <MenuOpenOutlinedIcon/>All</li>
+            <li onClick={()=>setSideBar(true)} className='z-1 headerHover flex items-center gap-1 '> <MenuOpenOutlinedIcon/>All</li>
             <li  className='headerHover '>
             <Link to="/AboutUs" element={About}>
                 <button className='hover:opacity-50 curser-default text-white'
@@ -71,7 +71,8 @@ if(e.target.contains(ref.current)){
             sideBar && (
           <div className="w-full h-screen text-black fixed top-0 left-0 bg-amazon_blue bg-opacity-50">
             <div className="w-[320px] h-full relative ">
-              <motion.div ref={ref} initial={{x:-500, opacity:0}} animate={{x:0, opacity:1}} transition={{duration:.5}} className="w[310px] h-full bg-white border border-black">
+              {/* <motion.div ref={ref} initial={{x:-500, opacity:0}} animate={{x:0, opacity:1}} transition={{duration:.5}} className="w[310px] h-full bg-white border border-black"> */}
+              <div ref={ref} className="w[310px] h-full bg-white border border-black">    
                 <div className="w-full bg-amazon_light text-white py-2 px-6 flex items-center gap-4"> <AccountCircleRoundedIcon/>
                 <h3 className=' font-titleFont font-bold text-lg tracking-wide' > Hello, Sign In</h3></div>
                 <SideNav
@@ -93,7 +94,8 @@ if(e.target.contains(ref.current)){
 
               <CloseOutlinedIcon/>
               </span>
-              </motion.div>
+              </div>
+              {/* </motion.div> */}
             </div>
           </div>
           )

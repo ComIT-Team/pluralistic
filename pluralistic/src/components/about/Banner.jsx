@@ -67,7 +67,7 @@ const Banner = () => {
   return (
     <div className="w-full">
         
-        <div className="w-full h-full relative">
+        <div className="w-full h-full relative py-2">
         <Slider {...settings}>
           <div>
             <img src={banner1} alt="img1" />

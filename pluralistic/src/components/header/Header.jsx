@@ -3,18 +3,21 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import { Link } from "react-router-dom";
 import { useState } from 'react';
 import { allItems } from '../../constants/Categories';
 import Navbar from '../navbar/Navbar';
+import Home from '../../components/Home'
 function Header() {
    const [showAll, setShowAll] = useState(false) 
     
   return (
-    <div className='w-full '>
-    <div className='w-full bg-amazon_blue bg-opacity-25 text-white px-4 py-3 flex items-center gap-4'>
+    <div className='w-full sticky top-0 z-50 '>
+    <div className='w-full bg-gradient-to-br from-indigo-500 to-pink-700 via-blue-800 text-white px-4 py-3 flex items-center gap-4'>
     {/*=========== Image start here=========== */}
     <div className="headerHover ">
-    <img src={logo} className='w-40 mt-2 ' alt="logo"></img>
+   <Link to= '/' element={Home}>
+    <img src={logo} className='w-40 mt-2 ' alt="logo"></img></Link>
     </div>
     {/* ===========Image end here ===========*/}
     {/* ===========Deliver Start here=========== */}
