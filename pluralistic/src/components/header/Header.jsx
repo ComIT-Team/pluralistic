@@ -3,28 +3,31 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import { Link } from "react-router-dom";
 import { useState } from 'react';
 import { allItems } from '../../constants/Categories';
 import Navbar from '../navbar/Navbar';
+import Home from '../../components/Home'
 function Header() {
    const [showAll, setShowAll] = useState(false) 
     
   return (
-    <div className='w-full bg-amazon_blue bg-opacity-25 '>
-    <div className='max-w-container text-white px-4 py-3 flex items-center gap-4'>
+    <div className='w-full sticky top-0 z-50 '>
+    <div className='w-full bg-gradient-to-br from-indigo-500 to-pink-700 via-blue-800 text-white px-4 py-3 flex items-center gap-4'>
     {/*=========== Image start here=========== */}
     <div className="headerHover ">
-    <img src={logo} className='w-40 mt-2 ' alt="logo"></img>
+   <Link to= '/' element={Home}>
+    <img src={logo} className='w-40 mt-2 ' alt="logo"></img></Link>
     </div>
     {/* ===========Image end here ===========*/}
     {/* ===========Deliver Start here=========== */}
-    <div  className="headerHover ">
+    <div  className="headerHover hidden mdl:inline-flex ">
         <LocationOnIcon/>
         <p className='text-sm text-lightText font-light flex flex-col'>Deliver to <span className='text-sm font-semibold -mt-1 text-whiteText'>Calgary</span></p>
         </div>
     {/* ===========Deliver end here ===========*/}
     {/* ===========Search start here=========== */}
-    <div className='h-10 rounded-md flex flex-grow relative'>
+    <div className='h-10 rounded-md hidden lgl:flex flex-grow relative'>
         <span onClick={()=> setShowAll(!showAll)} className='w-14 h-full bg-gray-200 hover:bg0gray-300 border-2 cursor-pointer duration-300 text-sm text-amazon_blue font-titleFont flex items-center justify-center rounded-l'>All<span></span>
         <ArrowDropDownOutlinedIcon/>
         </span>
@@ -49,8 +52,8 @@ function Header() {
     {/* ===========Search End here ===========*/}
     {/*=========== Signin start here ===========*/}
         <div className='flex flex-col items-start justify-center headerHover'>
-            <p className=' text-xs text-lightText font-light'>Hello, Sign In</p>
-            <p  className='text-sm font-semibold -mt-1 text-whiteText'>
+            <p className='text-sm mdl:text-xs mdl:text-lightText font-light'>Hello, Sign In</p>
+            <p  className='text-sm font-semibold -mt-1 text-whiteText hidden mdl:inline-flex'>
             Accounts & list{""}
             <span>
                 <ArrowDropDownOutlinedIcon/>
@@ -59,7 +62,7 @@ function Header() {
         </div>
     {/* ===========Signin end here ===========*/}
      {/* ===========Orders start here ===========*/}
-        <div className='flex flex-col items-start justify-center headerHover'>
+        <div className='hidden lgl:flex flex-col items-start justify-center headerHover'>
         <p className='text-xs text-lightText font-light'>Returns</p>
         <p className='text-sm font-semibold -mt-1 text-whiteText'>& Orders</p>
         </div>

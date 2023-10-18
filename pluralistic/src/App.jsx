@@ -7,6 +7,7 @@ import SignUp from './components/signup/SignUp';
 import Home from './components/Home';
 import Products from './components/Products';
 import Header from './components/header/Header';
+import Footer from './components/footer/footer';
 function App() {
  
 
@@ -15,25 +16,17 @@ function App() {
      <div className='bg-gradient-to-br from-indigo-500 to-pink-700 via-blue-800 bg-no-repeat text-white font-bodyFont'>
       <Router>
           <Header />
-        
         <div className='container'>
-
-        
 <Routes>
 <Route  path='/' element={<Home/>}></Route>
 <Route  path='/login' element={<Login/>}></Route>
 <Route  path='/SignUp' element={<SignUp/>}></Route>
-<Route  path='/products' element={<Products/>}></Route>
-        
-       
+<Route  path='/products' element={<Products/>}></Route>    
 </Routes>
-        
-      
-        
         </div>
+     <Footer/>
       </Router>
       </div>
-      
     </>
   )
 }
