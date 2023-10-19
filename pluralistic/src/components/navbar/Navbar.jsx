@@ -21,7 +21,7 @@ if(e.target.contains(ref.current)){
     },[ref,sideBar])
   })
   return (
-    <div className="w-full px-4  h-[36px]  mt-1 bg-indigo-900 text-white flex items-center ">
+    <div className="w-full px-4  h-[36px]   bg-indigo-900 text-white flex items-center ">
 {/* <Link to='/' element={Home}><h1 className='font-bold text-white no-underline text-xl'>Pluralistic</h1></Link> */}
    
         
