@@ -8,8 +8,10 @@ import { useState } from 'react';
 import { allItems } from '../../constants/Categories';
 import Navbar from '../navbar/Navbar';
 import Home from '../../components/Home'
+import { useSelector } from 'react-redux';
 function Header() {
    const [showAll, setShowAll] = useState(false) 
+   const products = useSelector((state)=> state.oneReducer.products)
     
   return (
     <div className='w-full sticky top-0 z-50 '>
@@ -68,11 +70,14 @@ function Header() {
         </div>
     {/*  ===========Orders End here=========== */}
     {/* ===========Cart start here ===========*/}
+        <Link to="/cart">
         <div className='flex items-start justify-center headerHover relative'>
             <ShoppingCartOutlinedIcon/>
             <p className='text-xs font-semibold mt-3 text-whiteText'>Cart 
-            <span className='absolute text-xs -top-2 left-6 font-semibold p-1 h-4 bg-primary text-amazon_blue rounded-full flex justify-center items-center'>0</span></p>
-        </div>
+            <span className='absolute text-xs -top-2.5 left-6 font-bold p-1 h-4 bg-white bg-opacity-45 text-black rounded-full flex justify-center items-center z-50'>
+                {products.length > 0 ? products.length: 0}
+            </span></p>
+        </div></Link>
     {/* ===========Cart End here=========== */}
 
 
