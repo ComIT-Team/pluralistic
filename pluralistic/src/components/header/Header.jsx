@@ -11,7 +11,7 @@ import Home from '../../components/Home'
 import { useSelector } from 'react-redux';
 function Header() {
    const [showAll, setShowAll] = useState(false) 
-   const products = useSelector((state)=> state.oneReducer.products)
+   const products = useSelector((state)=> state.cart.products)
     
   return (
     <div className='w-full sticky top-0 z-50 '>
