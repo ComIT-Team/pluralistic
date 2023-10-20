@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { fetchApi } from "../fetchApi";
 import { Link } from "react-router-dom";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
-import VisibilityRoundedIcon from "@mui/icons-material/VisibilityRounded";
+//import VisibilityRoundedIcon from "@mui/icons-material/VisibilityRounded";
 import AddShoppingCartRoundedIcon from "@mui/icons-material/AddShoppingCartRounded";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/cartSlice";
 // import { ProductCard } from "./ProductCard";
 
 const Products = () => {
+  const dispatch = useDispatch()
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -136,7 +139,14 @@ const Products = () => {
                 </div>
                 <Link className="no-underline text-red-300 flex">
                   
-                  <button className="rounded-xl bg-orange-500/60 text-white p-1">
+                  <button onClick={()=>dispatch(addToCart({
+                    id:item.id,
+                    title:item.title,
+                    description:item.description,
+                    price:item.price,
+                    image:item.image,
+                    quantity:1,
+                  }))} className="rounded-xl bg-orange-500/60 text-white p-1">
                   <AddShoppingCartRoundedIcon className="p-1 text-red-600" />
                     Add to Cart
                   </button>

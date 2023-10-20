@@ -21,7 +21,7 @@ if(e.target.contains(ref.current)){
     },[ref,sideBar])
   })
   return (
-    <div className="w-full px-4  h-[36px]  mt-1 bg-indigo-900 text-white flex items-center ">
+    <div className="w-full px-4  h-[36px]   bg-indigo-900 text-white flex items-center ">
 {/* <Link to='/' element={Home}><h1 className='font-bold text-white no-underline text-xl'>Pluralistic</h1></Link> */}
    
         
@@ -90,7 +90,7 @@ if(e.target.contains(ref.current)){
                   one="Your Account"
                   two="Customer Service"
                 />
-              <span onClick={() => setSideBar(false)} className="cursor-pointer absolute top-0 left-[84%] md:left-[310px] w-10 h-10 text-black flex items-center justify-center border bg-gray-200 hover:bg-red-700 hover:text-white duration-300">
+              <span onClick={() => setSideBar(false)} className="cursor-pointer absolute top-0 left-[84%] md:left-[275px] w-10 h-10 text-black flex items-center justify-center border bg-gray-200 hover:bg-red-700 hover:text-white duration-300">
 
               <CloseOutlinedIcon/>
               </span>

@@ -33,7 +33,7 @@ export const middleList =[
         ]
     },
     {
-        _id:103,
+        _id:104,
         title:"Amazon Payment ",
         listItem: [
             {
@@ -49,7 +49,7 @@ export const middleList =[
         ]
     },
     {
-        _id:104,
+        _id:105,
         title:"Let Us Help You",
         listItem: [
             {

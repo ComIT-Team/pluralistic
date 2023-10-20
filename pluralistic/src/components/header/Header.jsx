@@ -8,15 +8,18 @@ import { useState } from 'react';
 import { allItems } from '../../constants/Categories';
 import Navbar from '../navbar/Navbar';
 import Home from '../../components/Home'
+import { useSelector } from 'react-redux';
+import Login from '../signup/Login';
 function Header() {
    const [showAll, setShowAll] = useState(false) 
+   const products = useSelector((state)=> state.cart.products)
     
   return (
     <div className='w-full sticky top-0 z-50 '>
     <div className='w-full bg-gradient-to-br from-indigo-500 to-pink-700 via-blue-800 text-white px-4 py-3 flex items-center gap-4'>
     {/*=========== Image start here=========== */}
     <div className="headerHover ">
-   <Link to= '/' element={Home}>
+   <Link to= '/home' element={Home}>
     <img src={logo} className='w-40 mt-2 ' alt="logo"></img></Link>
     </div>
     {/* ===========Image end here ===========*/}
@@ -52,13 +55,13 @@ function Header() {
     {/* ===========Search End here ===========*/}
     {/*=========== Signin start here ===========*/}
         <div className='flex flex-col items-start justify-center headerHover'>
-            <p className='text-sm mdl:text-xs mdl:text-lightText font-light'>Hello, Sign In</p>
+           <Link to="/login" element={Login}> <p className='text-sm mdl:text-xs mdl:text-lightText font-light'>Hello, Sign In</p>
             <p  className='text-sm font-semibold -mt-1 text-whiteText hidden mdl:inline-flex'>
             Accounts & list{""}
             <span>
                 <ArrowDropDownOutlinedIcon/>
             </span>
-            </p>
+            </p></Link>
         </div>
     {/* ===========Signin end here ===========*/}
      {/* ===========Orders start here ===========*/}
@@ -68,11 +71,14 @@ function Header() {
         </div>
     {/*  ===========Orders End here=========== */}
     {/* ===========Cart start here ===========*/}
+        <Link to="/cart">
         <div className='flex items-start justify-center headerHover relative'>
             <ShoppingCartOutlinedIcon/>
             <p className='text-xs font-semibold mt-3 text-whiteText'>Cart 
-            <span className='absolute text-xs -top-2 left-6 font-semibold p-1 h-4 bg-primary text-amazon_blue rounded-full flex justify-center items-center'>0</span></p>
-        </div>
+            <span className='absolute text-xs -top-2.5 left-6 font-bold p-1 h-4 bg-white bg-opacity-45 text-black rounded-full flex justify-center items-center z-50'>
+                {products.length > 0 ? products.length: 0}
+            </span></p>
+        </div></Link>
     {/* ===========Cart End here=========== */}
 
 
