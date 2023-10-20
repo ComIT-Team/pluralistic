@@ -11,6 +11,7 @@ const Banner = () => {
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: false,
+     
         beforeChange:(prev, next)=>{
             setDoActive(next);
         },
@@ -24,6 +25,7 @@ const Banner = () => {
                 margin:"0 auto",
                 transform:"translate(-50% -50%",
                 width:"210px",
+              
               }}
             >
               <ul style={{ width:"100%", display:"flex",
@@ -44,6 +46,7 @@ const Banner = () => {
                 justifyContent:"center",
                 background:"#131921",
                 padding:"8px 0",
+                
                 color: "white",
                 cursor:"pointer",
                 border: "1px solid #f3a847",
@@ -83,7 +86,8 @@ const Banner = () => {
                   }}>
                     <ul style={{ width:"100%", display:"flex",
               alignItems:"center",
-              justifyContent:"space-between"
+              justifyContent:"space-between",
+              
               }}> {dots} </ul>
                   </div>
                 )
@@ -94,17 +98,17 @@ const Banner = () => {
   return (
     <div className="w-full">
         
-        <div className="w-full h-full relative py-2">
+        <div className="w-full h-full relative  mx-auto">
         <Slider {...settings}>
-          <div>
-            <img src={banner1} alt="img1" />
+          <div className="mx-auto ">
+            <img className="object-fill h-80 w-full" src={banner1} alt="img1" />
           </div>
           <div>
-            <img src={banner2} alt="img2" />
+            <img className="object-fill h-80 w-full" src={banner2} alt="img2" />
           </div>
 
           <div>
-            <img src={banner3} alt="img3" />
+            <img className="object-fill h-80 w-full" src={banner3} alt="img3" />
           </div>
           {/* <div>
             <img src={banner4} alt="img4" />

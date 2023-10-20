@@ -9,6 +9,7 @@ import { allItems } from '../../constants/Categories';
 import Navbar from '../navbar/Navbar';
 import Home from '../../components/Home'
 import { useSelector } from 'react-redux';
+import Login from '../signup/Login';
 function Header() {
    const [showAll, setShowAll] = useState(false) 
    const products = useSelector((state)=> state.cart.products)
@@ -18,7 +19,7 @@ function Header() {
     <div className='w-full bg-gradient-to-br from-indigo-500 to-pink-700 via-blue-800 text-white px-4 py-3 flex items-center gap-4'>
     {/*=========== Image start here=========== */}
     <div className="headerHover ">
-   <Link to= '/' element={Home}>
+   <Link to= '/home' element={Home}>
     <img src={logo} className='w-40 mt-2 ' alt="logo"></img></Link>
     </div>
     {/* ===========Image end here ===========*/}
@@ -54,13 +55,13 @@ function Header() {
     {/* ===========Search End here ===========*/}
     {/*=========== Signin start here ===========*/}
         <div className='flex flex-col items-start justify-center headerHover'>
-            <p className='text-sm mdl:text-xs mdl:text-lightText font-light'>Hello, Sign In</p>
+           <Link to="/login" element={Login}> <p className='text-sm mdl:text-xs mdl:text-lightText font-light'>Hello, Sign In</p>
             <p  className='text-sm font-semibold -mt-1 text-whiteText hidden mdl:inline-flex'>
             Accounts & list{""}
             <span>
                 <ArrowDropDownOutlinedIcon/>
             </span>
-            </p>
+            </p></Link>
         </div>
     {/* ===========Signin end here ===========*/}
      {/* ===========Orders start here ===========*/}

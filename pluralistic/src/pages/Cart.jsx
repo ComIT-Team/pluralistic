@@ -85,7 +85,7 @@ const Cart = () => {
         <p className="text-sm text-center">{""}
         Your Shopping cart lives to serve. give it purpose - fill it with books, electronics, videos, etc. and make it happy.</p>
        <Link to="/">
-       <button className="w-full font-titleFont font-semibold text-lg bg-gradient-to-tr from-yellow-400 to-yellow-200 border hover:from-yellow-300 hover:to-yellow-400 border-yellow-500 hover:border-yellow-700 active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200 py-1.5 rounded-md mt-3 text-black">Continue Shopping</button>
+       <button className="w-full font-titleFont font-semibold text-lg bg-gradient-to-tr from-yellow-400 to-yellow-200 border hover:from-yellow-300 hover:to-yellow-400 border-yellow-500 hover:border-yellow-700 active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200 py-1.5 px-2 rounded-md mt-3 text-black">Continue Shopping</button>
        </Link>
         </div>
         </motion.div>
