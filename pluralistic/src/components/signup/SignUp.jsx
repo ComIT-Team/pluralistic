@@ -1,7 +1,16 @@
 
 import { Link } from "react-router-dom"
 import Login from "./Login"
+import SellerLogin from "./SellerLogin"
+import { useState } from "react"
 const SignUp = () => {
+  const [clientName, setClientName] =useState("");
+  const[email, setEmail] = useState("");
+  const[password, setPassword] = useState("");
+  const[cPassword, seusPassword] = useState("");
+  const handleRegistration=(e)=>{
+    e.preventDefault()
+  }
   return (
     <>
        <section className="h-screen">
@@ -164,7 +173,8 @@ const SignUp = () => {
 
           {/* <!-- Submit button --> */}
           <div className="text-center lg:text-left">
-            <button
+            <button 
+            onClick={handleRegistration}
               type="button"
               className="inline-block rounded bg-primary px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
               data-te-ripple-init
@@ -177,9 +187,14 @@ const SignUp = () => {
               Already have an account?
               <Link
                 to="/login" element={Login}
-                className="text-danger transition duration-150 ease-in-out hover:text-danger-600 focus:text-danger-600 active:text-danger-700"
-                >Login</Link
+                className="text-red-500 transition duration-150 ease-in-out hover:text-red-600  focus:text-red-700 active:text-red-900 justify-between text-lg underline underline-offset-4"
+                >  Login</Link
               >
+            </p>
+            <p className="text-xs mt-5">Buying for Wholesale?  
+            <Link to="seller" element={SellerLogin}> 
+            <span className="text-sm font-semibold text-pink-950 hover:text-indigo-950 hover:underline underline-offset-1 cursor-pointer duration-100">  Create a free Business Account</span>
+            </Link> 
             </p>
           </div>
         </form>

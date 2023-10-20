@@ -8,6 +8,7 @@ import {
 
 import Login from './components/signup/Login';
 import SignUp from './components/signup/SignUp';
+import SellerLogin from './components/signup/SellerLogin'
 import Home from './components/Home';
 import Products from './components/Products';
 import Header from './components/header/Header';
@@ -31,6 +32,7 @@ function App() {
 <Route  path='/login' element={<Login/>}></Route>
 <Route  path='/SignUp' element={<SignUp/>}></Route>
 <Route  path='/products' element={<Products/>}></Route> 
+<Route  path='/seller' element={<SellerLogin/>}></Route> 
   </Route>
  ))
 

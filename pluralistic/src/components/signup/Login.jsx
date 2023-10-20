@@ -153,7 +153,7 @@ setInput({...input, [e.target.name]: e.target.value})
               Don not have an account? 
               
                 <Link to="/SignUp" element={SignUp}
-                className="text-red-500 transition duration-150 ease-in-out hover:text-red-600  focus:text-danger-600 active:text-danger-700 justify-between text-lg underline underline-offset-4">   Register
+                className="text-red-500 transition duration-150 ease-in-out hover:text-red-600  focus:text-red-700 active:text-red-900 justify-between text-lg underline underline-offset-4">   Register
                 </Link>
               
             </p>
