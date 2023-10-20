@@ -11,7 +11,8 @@ const FooterTop = () => {
             {/* //////need onclick */}
             <button className="w-full bg-indigo-900 rounded-md py-1 font-semibold cursor-pointe hover:bg-indigo-600 active:bg-indigo-500">Sign In</button></Link>
             <p className="text-sm mt-1 text-black">New Customer?{""}</p>
-            <span className="text-pink-400 ml-1 cursor-pointer">Start here.</span>
+            <Link to="/SignUp">
+            <span className="text-pink-400 ml-1 cursor-pointer">Start here.</span></Link>
            </div>
         </div>
     </div>

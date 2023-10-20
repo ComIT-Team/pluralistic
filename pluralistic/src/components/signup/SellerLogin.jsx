@@ -2,7 +2,7 @@
 
 function SellerLogin() {
   return (
-    <div>SellerLogin</div>
+    <div className="text-black test-lg">SellerLogin</div>
   )
 }
 
