@@ -1,5 +1,6 @@
+//import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom'
 
-import { Link } from 'react-router-dom'
 
 import SignUp from './SignUp'
 import { useState } from 'react'
@@ -8,7 +9,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [errEmail, setErrEmail] = useState("")
   const [errPassword, setErrPassword] = useState("")
-
+  //const navigate = useNavigate()
   const handleEmail = (e) => {
     setEmail(e.target.value);
     setErrEmail("")
@@ -24,8 +25,8 @@ const Login = () => {
     // eslint-disable-next-line no-useless-escape
     return String(email).toLowerCase().match(/^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$/gm);
   }
-  const handleLoginClick = (e) => {
-    e.preventDefault()
+  const handleLoginClick = () => {
+    
     if (!email) {
       setErrEmail("Enter your email")
     } else {
@@ -46,6 +47,37 @@ const Login = () => {
     }
   }
 
+  const loginClick =(e)=>{
+    e.preventDefault()
+  handleLoginClick();
+    const user ={email,password}
+    console.log(user)
+    fetch("http://localhost:86/api/v1/auth/signin",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(user)
+    }).then((response)=>{
+      Promise.all([response.json(), response.headers])
+      console.log("welcome user")
+     window.location.href = "/home"
+     // put a catch and add jwt for checking authorization is pending.....
+    })
+  //   try{
+  //    const response = await axios.post("http://localhost:86/api/v1/auth/signin",JSON.stringify({
+  //     email: email,
+  //     password: password}),
+  //     {
+  //       headers:{'Content-Type':'application/json'}
+  //     });
+  //     console.log(response.data);
+  //     console.log(email)
+  //     navigate("/home");
+  // }
+  //    catch(err){
+  //     alert(err)
+  //    }
+     
+  }
 
   return (
     <>
@@ -179,7 +211,7 @@ const Login = () => {
 
                 {/* <!-- Login button --> */}
                 <div className="text-center lg:text-left">
-                  <button onClick={handleLoginClick}
+                  <button onClick={(e)=>{loginClick(e)}}
                     type="submit"
                     className="inline-block rounded bg-indigo-900 px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-blue-900 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
                     data-te-ripple-init

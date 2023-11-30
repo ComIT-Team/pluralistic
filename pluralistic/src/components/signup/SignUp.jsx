@@ -1,25 +1,26 @@
-
+import axios from 'axios'
 import { Link } from "react-router-dom"
 import Login from "./Login"
 import SellerLogin from "./SellerLogin"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 const SignUp = () => {
-  const [clientName, setClientName] = useState("");
+  const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [lName, setLName] = useState("");
-  //  Error Messages start====
+  const [lastName, setLastName] = useState("");
+  
+  //  Error Messages start====>
   const [errClientName, setErrClientName] = useState("")
   const [errEmail, setErrEmail] = useState("")
   const [errPassword, setErrPassword] = useState("")
   const [errLName, setErrLName] = useState("")
   // Handle Inputs function ====>
   const handleName = (e) => {
-    setClientName(e.target.value)
+    setFirstName(e.target.value)
     setErrClientName("")
   }
   const handleLname = (e) => {
-    setLName(e.target.value)
+    setLastName(e.target.value)
     setErrLName("")
   }
   const handleEmail = (e) => {
@@ -37,12 +38,12 @@ const SignUp = () => {
   }
 
   //===Submit button for signup==>
-  const handleRegistration = (e) => {
-    e.preventDefault()
-    if (!clientName) {
+  const handleRegistration = () => {
+    
+    if (!firstName) {
       setErrClientName("Enter your Name")
     }
-    if (!lName) {
+    if (!lastName) {
       setErrLName("Enter your last Name")
     }
     if (!email) {
@@ -59,14 +60,35 @@ const SignUp = () => {
         setErrPassword("Password must be at least 6 characters")
       }
     }
-    if (clientName && email && emailValidation(email) && password && password.length >= 8 && lName) {
-      console.log(clientName, email, password, lName)
-      setClientName("")
+    if (firstName && email && emailValidation(email) && password && password.length >= 8 && lastName) {
+      //console.log(firstName, email, password, lastName)
+      setFirstName("")
       setEmail("")
       setPassword("")
-      setLName("")
+      setLastName("")
     }
   }
+
+ const onSubmit = async(e) =>{
+  e.preventDefault();
+  handleRegistration();
+try{
+
+  await axios.post("http://localhost:86/api/v1/auth/signup",{
+  firstName:firstName ,
+  email: email,
+  lastName:lastName,
+  password: password
+} );
+alert("Welcome to Pluralistic");
+console.log(firstName,  email,password);
+ } catch(err){
+  alert(err)
+ }
+}
+   
+
+
   return (
     <>
       <section className="h-screen -mt-35 p-3">
@@ -84,7 +106,7 @@ const SignUp = () => {
 
             {/* <!-- Right column container --> */}
             <div className="mb-12 md:mb-0 md:w-8/12 lg:w-5/12 xl:w-5/12">
-              <form>
+              <form >
                 {/* <!--Sign in section--> */}
                 <div
                   className="flex flex-row items-center justify-center lg:justify-start">
@@ -153,7 +175,7 @@ const SignUp = () => {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="relative mb-6" >
                     <input onChange={handleName}
-                      value={clientName}
+                      value={firstName}
                       type="text"
                       className=" peer block min-h-[auto] w-full border-0 rounded px-3 py-[0.32rem] leading-[2.15] mb-3 outline-double outline-white text-white  focus:outline-none focus:ring-1 focus:ring-black focus:border-black placeholder-transparent bg-transparent "
                       id="exampleInput123"
@@ -172,7 +194,7 @@ const SignUp = () => {
                     }
                   </div>
                   <div className="relative mb-6" >
-                    <input value={lName} onChange={handleLname}
+                    <input value={lastName} onChange={handleLname}
                       type="text"
                       className="peer block min-h-[auto] w-full border-0 rounded px-3 py-[0.32rem] leading-[2.15] mb-3 outline-double outline-white text-white  focus:outline-none focus:ring-1 focus:ring-black focus:border-black placeholder-transparent bg-transparent"
                       id="exampleInput124"
@@ -252,10 +274,10 @@ const SignUp = () => {
                   <Link to="#!">Forgot password?</Link>
                 </div>
 
-                {/* <!-- Submit button --> */}
+                {/* <!-- SignUp button --> */}
                 <div className="text-center lg:text-left">
                   <button
-                    onClick={handleRegistration}
+                    onClick={(e)=>onSubmit(e)}
                     type="button"
                     className="inline-block rounded bg-primary px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
                     data-te-ripple-init
@@ -282,6 +304,7 @@ const SignUp = () => {
             </div>
           </div>
         </div>
+        
       </section>
     </>
   )
