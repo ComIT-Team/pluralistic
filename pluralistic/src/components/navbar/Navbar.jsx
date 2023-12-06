@@ -8,8 +8,10 @@ import Products from '../Products'
 import { Link } from 'react-router-dom'
 import { useEffect, useRef, useState } from "react"
 import SideNav from "./SideNav";
+import { useSelector } from "react-redux";
 //import Home from "../Home"
 const Navbar = () => {
+  const userInfo = useSelector((state) => state.cart.userInfo);
   const [sideBar, setSideBar]= useState(false);
   const ref =useRef();
   useEffect(()=>{
@@ -71,10 +73,18 @@ if(e.target.contains(ref.current)){
             sideBar && (
           <div className="w-full h-screen text-black fixed top-0 left-0 bg-amazon_blue bg-opacity-50">
             <div className="w-[320px] h-full relative ">
-              <motion.div ref={ref} initial={{x:-500, opacity:0}} animate={{x:0, opacity:1}} transition={{duration:.5}} className="w-[85%] md:w[310px] h-full bg-white border border-black">
+              <motion.div ref={ref} 
+              initial={{x:-500, opacity:0}} animate={{x:0, opacity:1}} transition={{duration:.5}} className="w-[85%] md:w[310px] h-full bg-white border border-black">
               <div ref={ref} className="w[310px] h-full bg-white border border-black">    
-                <div className="w-full bg-amazon_light text-white py-2 px-6 flex items-center gap-4"> <AccountCircleRoundedIcon/>
-                <h3 className=' font-titleFont font-bold text-lg tracking-wide' > Hello, Sign In</h3></div>
+                <div className="w-full bg-amazon_light text-white py-2 px-6 flex items-center gap-4"> 
+                {
+                  userInfo ? (
+                    <h3 className=' font-titleFont font-bold text-lg tracking-wide' > {userInfo.email}</h3>
+                  ):(
+                    <h3 className=' font-titleFont font-bold text-lg tracking-wide' > Hello, Sign In</h3>
+                  )
+                }
+                </div>
                 <SideNav
                   title="Shop By Department"
                   one="Electronics"

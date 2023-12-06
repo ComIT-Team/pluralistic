@@ -1,8 +1,11 @@
 import axios from 'axios'
-import { Link } from "react-router-dom"
+import {motion} from 'framer-motion'
+import {ColorRing }from 'react-loader-spinner'
+//import {CircularProgress} from '@mui/material'
+import { Link, useNavigate } from "react-router-dom"
 import Login from "./Login"
 import SellerLogin from "./SellerLogin"
-import { useState, useEffect } from "react"
+import { useState, } from "react"
 const SignUp = () => {
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
@@ -14,6 +17,10 @@ const SignUp = () => {
   const [errEmail, setErrEmail] = useState("")
   const [errPassword, setErrPassword] = useState("")
   const [errLName, setErrLName] = useState("")
+  const [err, setErr] =useState("")
+  const [loading, setLoading]= useState(false)
+  const [successMsg, setSuccessMsg]=useState("")
+  const navigate = useNavigate()
   // Handle Inputs function ====>
   const handleName = (e) => {
     setFirstName(e.target.value)
@@ -51,6 +58,7 @@ const SignUp = () => {
     } else {
       if (!emailValidation(email)) {
         setErrEmail("Enter a valid email")
+        setErr("")
       }
     }
     if (!password) {
@@ -61,29 +69,37 @@ const SignUp = () => {
       }
     }
     if (firstName && email && emailValidation(email) && password && password.length >= 8 && lastName) {
-      //console.log(firstName, email, password, lastName)
       setFirstName("")
       setEmail("")
       setPassword("")
       setLastName("")
     }
   }
-
+ // Handle signup >>>>
  const onSubmit = async(e) =>{
   e.preventDefault();
   handleRegistration();
 try{
-
+setLoading(true)
   await axios.post("http://localhost:86/api/v1/auth/signup",{
   firstName:firstName ,
   email: email,
   lastName:lastName,
   password: password
 } );
-alert("Welcome to Pluralistic");
-console.log(firstName,  email,password);
+//alert("Welcome to Pluralistic");
+setLoading(false)
+setSuccessMsg("Account Created Successfully !")
+setTimeout(()=>{
+  navigate("/login")
+},3000)
  } catch(err){
-  alert(err)
+  const errMessage = err.message;
+  
+  if(errMessage.includes("Request failed with status code 403")){
+setErr("Email Already in use, please try another one")
+   // alert("Email Already in use, please try another one")
+  }
  }
 }
    
@@ -232,6 +248,12 @@ console.log(firstName,  email,password);
                       <span className="italic font-titleFont font-extrabold text-base">!</span>{errEmail}</p>
                   )
                   }
+                  {err && (
+
+<p className="text-red-600 text-xs font-semibold tracking-wide flex items-center gap-2 -mt-1.5">
+  <span className="italic font-titleFont font-extrabold text-base">!</span>{err}</p>
+)
+}
                 </div>
 
                 {/* <!-- Password input --> */}
@@ -284,6 +306,34 @@ console.log(firstName,  email,password);
                     data-te-ripple-color="light">
                     Sign up
                   </button>
+                  { loading && (
+                    <div className='flex justify-center'>
+                    <ColorRing
+  visible={true}
+  height="80"
+  width="80"
+  ariaLabel="blocks-loading"
+  wrapperStyle={{}}
+  wrapperClass="blocks-wrapper"
+  colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+/>
+
+                    </div>
+                  )}
+                  {
+                   successMsg && (
+                    <div>
+                      <motion.p
+                      initial={{y:10, opacity:0}}
+                      animate={{y:0, opacity:1}}
+                      transition={{duration:0.5}}
+                      className="text-base font-semibold text-purple-950 border-[1px]border-cyan-600 px-2 text-center">{successMsg}
+                      </motion.p>
+                      
+                    </div>
+
+                   ) 
+                  }
 
                   {/* <!-- Register link --> */}
                   <p className="mb-0 mt-2 pt-1 text-sm font-semibold">
