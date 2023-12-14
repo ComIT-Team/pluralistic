@@ -1,19 +1,30 @@
 import logo from '../../assets/logo-transparent-svg.svg';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import LogoutIcon from '@mui/icons-material/Logout';
 import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import { allItems } from '../../constants/Categories';
 import Navbar from '../navbar/Navbar';
 import Home from '../../components/Home'
 import { useSelector } from 'react-redux';
 import Login from '../signup/Login';
+import { userSignOut } from '../../redux/cartSlice';
+ import { useDispatch } from 'react-redux';
+
 function Header() {
    const [showAll, setShowAll] = useState(false) 
-   const products = useSelector((state)=> state.cart.products)
-    
+   const products = useSelector((state)=> state.cart.products);
+   const userInfo = useSelector((state) => state.cart.userInfo)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const handleLogout=() =>{
+       dispatch(userSignOut())
+console.log("user signed out")
+       navigate("/home")
+    }
   return (
     <div className='w-full sticky top-0 z-50 '>
     <div className='w-full bg-gradient-to-br from-indigo-500 to-pink-700 via-blue-800 text-white px-4 py-3 flex items-center gap-4'>
@@ -53,9 +64,16 @@ function Header() {
     </div>
 
     {/* ===========Search End here ===========*/}
-    {/*=========== Signin start here ===========*/}
+    {/*=========== Header Signin start here ===========*/}
         <div className='flex flex-col items-start justify-center headerHover'>
-           <Link to="/login" element={Login}> <p className='text-sm mdl:text-xs mdl:text-lightText font-light'>Hello, Sign In</p>
+           <Link to="/login" element={Login}> 
+           {
+            userInfo ?( <p className='text-sm mdl:text-xs mdl:text-lightText font-light'>{userInfo.email}</p>) 
+            :(
+                <p className='text-sm mdl:text-xs mdl:text-lightText font-light'>Hello, Sign In</p>
+            )
+           }
+           
             <p  className='text-sm font-semibold -mt-1 text-whiteText hidden mdl:inline-flex'>
             Accounts & list{""}
             <span>
@@ -80,7 +98,13 @@ function Header() {
             </span></p>
         </div></Link>
     {/* ===========Cart End here=========== */}
-
+    {/* ===========Logout button=========== */}
+           {userInfo && (
+            <div  onClick ={handleLogout}className='flex flex-col justify-center items-center headerHover relative' >
+                <LogoutIcon />
+                <p className='hidden mdl:inline-flex text-xs font-semibold text-whiteText'>Logout</p>
+            </div>
+           )}
 
 
     </div>

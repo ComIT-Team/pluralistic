@@ -1,25 +1,33 @@
-
-import { Link } from "react-router-dom"
+import axios from 'axios'
+import {motion} from 'framer-motion'
+import {ColorRing }from 'react-loader-spinner'
+//import {CircularProgress} from '@mui/material'
+import { Link, useNavigate } from "react-router-dom"
 import Login from "./Login"
 import SellerLogin from "./SellerLogin"
-import { useState } from "react"
+import { useState, } from "react"
 const SignUp = () => {
-  const [clientName, setClientName] = useState("");
+  const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [lName, setLName] = useState("");
-  //  Error Messages start====
+  const [lastName, setLastName] = useState("");
+  
+  //  Error Messages start====>
   const [errClientName, setErrClientName] = useState("")
   const [errEmail, setErrEmail] = useState("")
   const [errPassword, setErrPassword] = useState("")
   const [errLName, setErrLName] = useState("")
+  const [err, setErr] =useState("")
+  const [loading, setLoading]= useState(false)
+  const [successMsg, setSuccessMsg]=useState("")
+  const navigate = useNavigate()
   // Handle Inputs function ====>
   const handleName = (e) => {
-    setClientName(e.target.value)
+    setFirstName(e.target.value)
     setErrClientName("")
   }
   const handleLname = (e) => {
-    setLName(e.target.value)
+    setLastName(e.target.value)
     setErrLName("")
   }
   const handleEmail = (e) => {
@@ -37,12 +45,12 @@ const SignUp = () => {
   }
 
   //===Submit button for signup==>
-  const handleRegistration = (e) => {
-    e.preventDefault()
-    if (!clientName) {
+  const handleRegistration = () => {
+    
+    if (!firstName) {
       setErrClientName("Enter your Name")
     }
-    if (!lName) {
+    if (!lastName) {
       setErrLName("Enter your last Name")
     }
     if (!email) {
@@ -50,6 +58,7 @@ const SignUp = () => {
     } else {
       if (!emailValidation(email)) {
         setErrEmail("Enter a valid email")
+        setErr("")
       }
     }
     if (!password) {
@@ -59,14 +68,44 @@ const SignUp = () => {
         setErrPassword("Password must be at least 6 characters")
       }
     }
-    if (clientName && email && emailValidation(email) && password && password.length >= 8 && lName) {
-      console.log(clientName, email, password, lName)
-      setClientName("")
+    if (firstName && email && emailValidation(email) && password && password.length >= 8 && lastName) {
+      setFirstName("")
       setEmail("")
       setPassword("")
-      setLName("")
+      setLastName("")
     }
   }
+ // Handle signup >>>>
+ const onSubmit = async(e) =>{
+  e.preventDefault();
+  handleRegistration();
+try{
+setLoading(true)
+  await axios.post("http://localhost:86/api/v1/auth/signup",{
+    //username:userName,
+  firstName:firstName ,
+  email: email,
+  lastName:lastName,
+  password: password
+} );
+//alert("Welcome to Pluralistic");
+setLoading(false)
+setSuccessMsg("Account Created Successfully !")
+setTimeout(()=>{
+  navigate("/login")
+},3000)
+ } catch(err){
+  const errMessage = err.message;
+  
+  if(errMessage.includes("Request failed with status code 403")){
+setErr("Email Already in use, please try another one")
+   // alert("Email Already in use, please try another one")
+  }
+ }
+}
+   
+
+
   return (
     <>
       <section className="h-screen -mt-35 p-3">
@@ -84,7 +123,7 @@ const SignUp = () => {
 
             {/* <!-- Right column container --> */}
             <div className="mb-12 md:mb-0 md:w-8/12 lg:w-5/12 xl:w-5/12">
-              <form>
+              <form >
                 {/* <!--Sign in section--> */}
                 <div
                   className="flex flex-row items-center justify-center lg:justify-start">
@@ -153,7 +192,7 @@ const SignUp = () => {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="relative mb-6" >
                     <input onChange={handleName}
-                      value={clientName}
+                      value={firstName}
                       type="text"
                       className=" peer block min-h-[auto] w-full border-0 rounded px-3 py-[0.32rem] leading-[2.15] mb-3 outline-double outline-white text-white  focus:outline-none focus:ring-1 focus:ring-black focus:border-black placeholder-transparent bg-transparent "
                       id="exampleInput123"
@@ -172,7 +211,7 @@ const SignUp = () => {
                     }
                   </div>
                   <div className="relative mb-6" >
-                    <input value={lName} onChange={handleLname}
+                    <input value={lastName} onChange={handleLname}
                       type="text"
                       className="peer block min-h-[auto] w-full border-0 rounded px-3 py-[0.32rem] leading-[2.15] mb-3 outline-double outline-white text-white  focus:outline-none focus:ring-1 focus:ring-black focus:border-black placeholder-transparent bg-transparent"
                       id="exampleInput124"
@@ -210,6 +249,12 @@ const SignUp = () => {
                       <span className="italic font-titleFont font-extrabold text-base">!</span>{errEmail}</p>
                   )
                   }
+                  {err && (
+
+<p className="text-red-600 text-xs font-semibold tracking-wide flex items-center gap-2 -mt-1.5">
+  <span className="italic font-titleFont font-extrabold text-base">!</span>{err}</p>
+)
+}
                 </div>
 
                 {/* <!-- Password input --> */}
@@ -252,16 +297,44 @@ const SignUp = () => {
                   <Link to="#!">Forgot password?</Link>
                 </div>
 
-                {/* <!-- Submit button --> */}
+                {/* <!-- SignUp button --> */}
                 <div className="text-center lg:text-left">
                   <button
-                    onClick={handleRegistration}
+                    onClick={(e)=>onSubmit(e)}
                     type="button"
                     className="inline-block rounded bg-primary px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
                     data-te-ripple-init
                     data-te-ripple-color="light">
                     Sign up
                   </button>
+                  { loading && (
+                    <div className='flex justify-center'>
+                    <ColorRing
+  visible={true}
+  height="80"
+  width="80"
+  ariaLabel="blocks-loading"
+  wrapperStyle={{}}
+  wrapperClass="blocks-wrapper"
+  colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+/>
+
+                    </div>
+                  )}
+                  {
+                   successMsg && (
+                    <div>
+                      <motion.p
+                      initial={{y:10, opacity:0}}
+                      animate={{y:0, opacity:1}}
+                      transition={{duration:0.5}}
+                      className="text-base font-semibold text-purple-950 border-[1px]border-cyan-600 px-2 text-center">{successMsg}
+                      </motion.p>
+                      
+                    </div>
+
+                   ) 
+                  }
 
                   {/* <!-- Register link --> */}
                   <p className="mb-0 mt-2 pt-1 text-sm font-semibold">
@@ -282,6 +355,7 @@ const SignUp = () => {
             </div>
           </div>
         </div>
+        
       </section>
     </>
   )
