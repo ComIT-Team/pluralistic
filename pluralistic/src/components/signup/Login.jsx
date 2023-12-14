@@ -59,17 +59,31 @@ const Login = () => {
     e.preventDefault()
     handleLoginClick();
     const user = {email, password }
-    setLoading(true)
+//     fetch("http://localhost:86/api/v1/auth/signin", {
+//       method: "POST",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify(user)
+//     }).then((response) => 
+    
+//         Promise.all([response.json(), response.headers]))
+    
+   
+//     .then(([body,headers])=>{
+// const authValue = headers.get("response.data.name");
+// console.log(authValue)
+//     } )
+   setLoading(true)
     fetch("http://localhost:86/api/v1/auth/signin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user)
     }).then((response) => {
+      
       if (response.status === 200) {
         return Promise.all([response.json(), response.headers]),
         dispatch(setUserInfo({
-          _id:user.id,
-          firstName:user.firstName,
+          _id:user.idUser,
+          firstName:user.name,
           email:user.email
         }))
         ,
@@ -87,7 +101,9 @@ const Login = () => {
           setLoading(false)
       }
      
-    }).catch((message) => {
+    })
+    //.then((data)=> console.log(data))
+    .catch((message) => {
       alert(message)
       // setting errors for wrong email and password pending>>>
       // const errMessage = err.message;

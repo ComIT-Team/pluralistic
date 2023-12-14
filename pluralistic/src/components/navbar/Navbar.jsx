@@ -77,6 +77,7 @@ if(e.target.contains(ref.current)){
               initial={{x:-500, opacity:0}} animate={{x:0, opacity:1}} transition={{duration:.5}} className="w-[85%] md:w[310px] h-full bg-white border border-black">
               <div ref={ref} className="w[310px] h-full bg-white border border-black">    
                 <div className="w-full bg-amazon_light text-white py-2 px-6 flex items-center gap-4"> 
+                <AccountCircleRoundedIcon/>
                 {
                   userInfo ? (
                     <h3 className=' font-titleFont font-bold text-lg tracking-wide' > {userInfo.email}</h3>

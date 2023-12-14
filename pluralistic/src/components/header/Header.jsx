@@ -4,20 +4,26 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import { allItems } from '../../constants/Categories';
 import Navbar from '../navbar/Navbar';
 import Home from '../../components/Home'
 import { useSelector } from 'react-redux';
 import Login from '../signup/Login';
+import { userSignOut } from '../../redux/cartSlice';
+ import { useDispatch } from 'react-redux';
+
 function Header() {
    const [showAll, setShowAll] = useState(false) 
    const products = useSelector((state)=> state.cart.products);
    const userInfo = useSelector((state) => state.cart.userInfo)
-  
-    const handleLogOut=() =>{
-        
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const handleLogout=() =>{
+       dispatch(userSignOut())
+console.log("user signed out")
+       navigate("/home")
     }
   return (
     <div className='w-full sticky top-0 z-50 '>
@@ -94,7 +100,7 @@ function Header() {
     {/* ===========Cart End here=========== */}
     {/* ===========Logout button=========== */}
            {userInfo && (
-            <div onClick={handleLogOut} className='flex flex-col justify-center items-center headerHover relative' >
+            <div  onClick ={handleLogout}className='flex flex-col justify-center items-center headerHover relative' >
                 <LogoutIcon />
                 <p className='hidden mdl:inline-flex text-xs font-semibold text-whiteText'>Logout</p>
             </div>

@@ -82,6 +82,7 @@ const SignUp = () => {
 try{
 setLoading(true)
   await axios.post("http://localhost:86/api/v1/auth/signup",{
+    //username:userName,
   firstName:firstName ,
   email: email,
   lastName:lastName,
