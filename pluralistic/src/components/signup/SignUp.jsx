@@ -81,7 +81,7 @@ const SignUp = () => {
   handleRegistration();
 try{
 setLoading(true)
-  await axios.post("http://localhost:86/api/v1/auth/signup",{
+  await axios.post("http://3.145.11.221:80/api/v1/auth/signup",{
     //username:userName,
   firstName:firstName ,
   email: email,
