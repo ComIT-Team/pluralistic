@@ -5,6 +5,7 @@ import MenuOpenOutlinedIcon from '@mui/icons-material/MenuOpenOutlined';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import Products from '../Products'
+import SellerLogin from "../signup/SellerLogin";
 import { Link } from 'react-router-dom'
 import { useEffect, useRef, useState } from "react"
 import SideNav from "./SideNav";
@@ -31,7 +32,7 @@ if(e.target.contains(ref.current)){
        
             <li onClick={()=>setSideBar(true)} className=' z-4 headerHover flex items-center gap-1 p-0 '> <MenuOpenOutlinedIcon/>All</li>
             <li  className='headerHover  hidden md:inline-flex'>
-            <Link to="/AboutUs" element={About}>
+            <Link to="/about" element={About}>
                 <button className='hover:opacity-50 curser-default text-white'
                 >About-Us</button>
             
@@ -45,8 +46,10 @@ if(e.target.contains(ref.current)){
                 </Link>
             </li>
             <li  className=' headerHover  hidden md:inline-flex'>
+            <Link to="/SignUp/seller" element={SellerLogin}>
                 <button className='hover:opacity-50 curser-default text-white '
                 >Seller LogIn</button>
+                </Link>
                 {/* <div className='absolute top-0 left-0 transition group-hover:translate-y-5 translate-y-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible duration-500 ease-in-out group-hover:transform z-50 min-w-[560px] transform'>
                   <div  className='relative top-6 p-6 bg-white rounded-xl shadow-xl w-full'>
                     <p></p>

@@ -14,6 +14,7 @@ import Products from './components/Products';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import Cart from './pages/Cart';
+import About from "./components/about/AboutUs";
 //import { useEffect } from "react";
 
 const Layout=()=>{
@@ -26,20 +27,15 @@ const Layout=()=>{
   )
 }
 function App() {
-// useEffect(()=>{
-
-//   fetch("http://localhost:86/api/v1/auth/login").then(resp => resp.text())
-// .then(resp=>{
-//   console.log('getting data: ' + resp)
-// }) 
-// }, [])
  const router =createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<Layout/>}>
   <Route path="/home" element={<Home/>}></Route>
   <Route  path='/cart' element={<Cart/>}></Route>
 <Route  path='/login' element={<Login/>}></Route>
 <Route  path='/SignUp' element={<SignUp/>}></Route>
-<Route  path='/products' element={<Products/>}></Route> 
+<Route  path='/products' element={<Products/>}></Route>
+<Route  path='/about' element={<About/>}></Route>  
+
 <Route  path='/SignUp/seller' element={<SellerLogin/>}></Route> 
   </Route>
  ))

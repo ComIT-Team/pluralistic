@@ -9,6 +9,7 @@ import {useDispatch} from 'react-redux'
 import { setUserInfo } from '../../redux/cartSlice'
 const Login = () => {
   const [email, setEmail] = useState("");
+  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [errEmail, setErrEmail] = useState("")
   const [errPassword, setErrPassword] = useState("")
@@ -58,20 +59,7 @@ const Login = () => {
   const loginClick = (e) => {
     e.preventDefault()
     handleLoginClick();
-    const user = {email, password }
-//     fetch("http://localhost:86/api/v1/auth/signin", {
-//       method: "POST",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify(user)
-//     }).then((response) => 
-    
-//         Promise.all([response.json(), response.headers]))
-    
-   
-//     .then(([body,headers])=>{
-// const authValue = headers.get("response.data.name");
-// console.log(authValue)
-//     } )
+    const user = {email, password,userName }
    setLoading(true)
     fetch("http://3.145.11.221:80/api/v1/auth/signin", {
       method: "POST",
@@ -83,18 +71,17 @@ const Login = () => {
         return Promise.all([response.json(), response.headers]),
         dispatch(setUserInfo({
           _id:user.idUser,
-          firstName:user.name,
-          email:user.email
-        }))
-        ,
+          firstName:user.userName,
+          email:user.email,
+        })),
         
-          setLoading(false),
+        setLoading(false),
           setSuccessMsg("Logged in successfully! Welcome to Pluralistic"),
           setTimeout(() => {
             navigate("/home")
           }, 2000)
          
-      }
+        }
       if (response.status === 401) {
         return Promise.reject(),
           setSuccessMsg("Invalid login attempt"),
@@ -227,7 +214,7 @@ const Login = () => {
                         errEmail && (
 
                           <p className="text-red-600 text-xs font-semibold tracking-wide flex items-center gap-2 -mt-1.5">
-                            <span className="italic font-titleFont font-extrabold text-base">!</              span>{errEmail}</p>
+                            <span className="italic font-titleFont font-extrabold text-base">!</  span>{errEmail}</p>
                         )
                       }
                     </div>

@@ -68,7 +68,7 @@ console.log("user signed out")
         <div className='flex flex-col items-start justify-center headerHover'>
            <Link to="/login" element={Login}> 
            {
-            userInfo ?( <p className='text-sm mdl:text-xs mdl:text-lightText font-light'>{userInfo.email}</p>) 
+            userInfo ?( <p className='text-sm mdl:text-xs mdl:text-lightText font-light'>{userInfo.email}</p>)  // displaying userNmae is pendeing
             :(
                 <p className='text-sm mdl:text-xs mdl:text-lightText font-light'>Hello, Sign In</p>
             )

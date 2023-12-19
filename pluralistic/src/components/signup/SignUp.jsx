@@ -82,7 +82,7 @@ const SignUp = () => {
 try{
 setLoading(true)
   await axios.post("http://3.145.11.221:80/api/v1/auth/signup",{
-    //username:userName,
+    username:firstName,
   firstName:firstName ,
   email: email,
   lastName:lastName,
