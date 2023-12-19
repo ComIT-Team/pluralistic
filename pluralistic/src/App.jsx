@@ -12,7 +12,7 @@ import SellerLogin from './components/signup/SellerLogin'
 import Home from './components/Home';
 import Products from './components/Products';
 import Header from './components/header/Header';
-import Footer from './components/footer/footer';
+import Footer from './components/footer/Footer';
 import Cart from './pages/Cart';
 //import { useEffect } from "react";
 
