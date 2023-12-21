@@ -1,5 +1,5 @@
 
-import Hero from './Hero';
+
 import Cards from './Cards';
 import Banner from './about/Banner'
 const Home = () => {
@@ -8,8 +8,8 @@ const Home = () => {
 
     <div className='home'>
       <Banner/>
-        <Hero />
-        <Cards />
+        <Cards/>
+        
     </div>
     </>
   )

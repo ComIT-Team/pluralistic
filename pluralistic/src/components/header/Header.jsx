@@ -30,7 +30,7 @@ console.log("user signed out")
     <div className='w-full bg-gradient-to-br from-indigo-500 to-pink-700 via-blue-800 text-white px-4 py-3 flex items-center gap-4'>
     {/*=========== Image start here=========== */}
     <div className="headerHover ">
-   <Link to= '/home' element={Home}>
+   <Link to= '/' element={Home}>
     <img src={logo} className='w-40 mt-2 ' alt="logo"></img></Link>
     </div>
     {/* ===========Image end here ===========*/}
@@ -59,8 +59,10 @@ console.log("user signed out")
                 </div>
             )
         }
-        <input className='h-full text-base text-amazon_blue flex-grow outline-none border-non px-2' type="text"/>
-        <span className='w-12 h-full  relative z-[2] flex items-center justify-center bg-primary text-white font-medium shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg cursor-pointer rounded-r px-6 py-2.5'><SearchIcon/></span>
+        <input className='h-full text-base rounded-sm placeholder:text-sm text-amazon_blue border-[3px] flex-grow outline-none border-non px-2' type="text"
+            placeholder="Search your wishlist here"
+        />
+        <span className='w-12 h-full text-2xl  z-[2] flex items-center justify-center absolute right-0 bg-indigo-300 text-blue-600 font-medium shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg cursor-pointer rounded-r px-6 py-2.5'><SearchIcon/></span>
     </div>
 
     {/* ===========Search End here ===========*/}
@@ -92,7 +94,7 @@ console.log("user signed out")
         <Link to="/cart">
         <div className='flex items-start justify-center headerHover relative'>
             <ShoppingCartOutlinedIcon/>
-            <p className='text-xs font-semibold mt-3 text-whiteText'>Cart 
+            <p className='text-xs font-semibold mt-3 text-whiteText'>
             <span className='absolute text-xs -top-2.5 left-6 font-bold p-1 h-4 bg-white bg-opacity-45 text-black rounded-full flex justify-center items-center z-50'>
                 {products.length > 0 ? products.length: 0}
             </span></p>

@@ -6,6 +6,7 @@ import {
   RouterProvider
 } from "react-router-dom"
 //import axios from 'axios'
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Login from './components/signup/Login';
 import SignUp from './components/signup/SignUp';
 import SellerLogin from './components/signup/SellerLogin'
@@ -15,6 +16,7 @@ import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import Cart from './pages/Cart';
 import About from "./components/about/AboutUs";
+import { productsData } from "./api/FakeApi";
 //import { useEffect } from "react";
 
 const Layout=()=>{
@@ -29,11 +31,11 @@ const Layout=()=>{
 function App() {
  const router =createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<Layout/>}>
-  <Route path="/home" element={<Home/>}></Route>
+  <Route index element={<Home/>}></Route>
   <Route  path='/cart' element={<Cart/>}></Route>
 <Route  path='/login' element={<Login/>}></Route>
 <Route  path='/SignUp' element={<SignUp/>}></Route>
-<Route  path='/products' element={<Products/>}></Route>
+<Route  path='/products' element={<Products/>} loader={productsData}></Route>
 <Route  path='/about' element={<About/>}></Route>  
 
 <Route  path='/SignUp/seller' element={<SellerLogin/>}></Route> 

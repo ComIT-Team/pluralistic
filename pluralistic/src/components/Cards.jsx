@@ -3,7 +3,7 @@
 const Cards = () => {
   return (
     <div className="max-w-[1680px] mx-auto p-4 py-12 grid md:grid-cols-3 gap-6">
-        <div className='relative'>
+        <div className=''>
             <div className='rounded-xl absolute w-full h-full bg-black/50 text-white p-4'>
                 <h2 className='font-bold text-2xl'>Groceries</h2>
                 {/* <p>Experience the vibrant goodness of nature with our <span className='text-rose-500'>fresh
