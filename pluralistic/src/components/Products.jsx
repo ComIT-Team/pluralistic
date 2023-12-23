@@ -1,6 +1,7 @@
 // import { useEffect, useState } from "react";
 // import { fetchApi } from "../fetchApi";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone';
 // //import { Link } from "react-router-dom";
 // import AddRoundedIcon from "@mui/icons-material/AddRounded";
 // //import VisibilityRoundedIcon from "@mui/icons-material/VisibilityRounded";
@@ -17,19 +18,38 @@ const Products = () => {
   const data = useLoaderData()
   const productData = data.data
   return (
-    <div className="max-w-screen-2xl mx-auto grid grid-cols-4 gap-10 px-4 py-6">{productData.map((item) => (
-      <div key ={item.index} className="bg-white h-auto border-[1px] border-gray-200 py-6 z-30 hover:border-transparent shadow-none hover:shadow-textShadow duration-200 relative rounded-lg">
-<div className="w-full h-auto flex items-center justify-center">
+    <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 px-4 py-6">{productData.map((item) => (
+      <div key ={item.index} className="bg-white h-auto w-full border-[1px] border-gray-300 py-6  hover:border-transparent shadow-none hover:shadow-textShadow duration-200 relative rounded-lg group overflow-hidden">
+<div className="w-full h-auto flex items-center justify-center relative">
   <img className="w-52 h-64 object-contain scale-90 hover:scale-100 transition-transform duration-300" src={item.image}  alt ="productImage"/>
+  <span className='text-xm capitalize italic absolute top-0 right-2 text-gray-600'>{item.category}</span>
+  <div className='text-black  w-12 h-24 absolute bottom-10 right-0 border-[1px] border-gray-400 rounded-md flex flex-col translate-x-20 group-hover:translate-x-0 transition-transform duration-300'>
+  <span className=" w-full h-full border-b-[1px] border-b-gray-400 flex items-center justify-center text-xl bg-transparent hover:bg-indigo-300 cursor-pointer duration-300">
+  <ShoppingCartIcon />
+</span>
+<span className=" w-full h-full border-b-[1px] border-b-gray-400 flex items-center justify-center text-xl bg-transparent hover:bg-indigo-300 cursor-pointer duration-300 ">
+  <FavoriteTwoToneIcon/>
+</span>
+  </div>
 </div>
+
 <hr/>
-<div>
-  <h2 className="text-black">{item.title.substring(0,20)}</h2>
-  <p className="text-black">${item.price}</p>
+<div className="text-black px-4 py-3 flex flex-col gap-1">
+  <h2 className=" font-medium ">{item.title.substring(0,20)}</h2>
+  <p className="font-semibold ">${item.price}</p>
 </div>
 <div>
-  <p className="text-black text-sm">{item.description.substring(0,80)}...</p>
+  <p className=" text-xs text-gray-600 text-justify px-2">{item.description.substring(0,100)}...</p>
+  <button className="h-10  w-[18rem] xl:w-[20rem] m-4 sml:w-[22rem] md:w-[18rem]  lgl:w-[28rem] font-medium bg-indigo-600 text-white items-center rounded-md hover:bg-purple-700 duration-300">add to cart</button>
 </div>
+{/* xs:"320px",
+        sm:"375px",
+        sml:"500px",
+        md:"667px",
+        mdl:"768px",
+        lg:"960px",
+        lgl:"1024px",
+        xl:"1280px", */}
       </div>
     ))}
     </div>
