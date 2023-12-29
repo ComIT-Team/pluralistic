@@ -6,15 +6,15 @@ import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone';
 // import AddRoundedIcon from "@mui/icons-material/AddRounded";
 // //import VisibilityRoundedIcon from "@mui/icons-material/VisibilityRounded";
 // import AddShoppingCartRoundedIcon from "@mui/icons-material/AddShoppingCartRounded";
-//import { useDispatch } from "react-redux";
-///import { addToCart } from "../redux/cartSlice";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/cartSlice";
 // import { ProductCard } from "./ProductCard";
 // import { Search } from "./search/Search";
 // import { Results } from "./search/Results";
 import { useLoaderData } from "react-router-dom";
 
 const Products = () => {
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const data = useLoaderData()
   const productData = data.data
   return (
@@ -40,7 +40,16 @@ const Products = () => {
 </div>
 <div>
   <p className=" text-xs text-gray-600 text-justify px-2">{item.description.substring(0,100)}...</p>
-  <button className="h-10  w-[18rem] xl:w-[20rem] m-4 sml:w-[22rem] md:w-[18rem]  lgl:w-[28rem] font-medium bg-indigo-600 text-white items-center rounded-md hover:bg-purple-700 duration-300">add to cart</button>
+  <button className="h-10  w-[18rem] xl:w-[20rem] m-4 sml:w-[22rem] md:w-[18rem]  lgl:w-[28rem] font-medium bg-indigo-600 text-white items-center rounded-md hover:bg-purple-700 duration-300"
+  onClick={()=>dispatch(addToCart({
+    id:item.id,
+    title:item.title,
+    description: item.description,
+    price:item.price,
+    category:item.category,
+    image:item.image,
+    quantity:1,
+  }))}>Add to cart</button>
 </div>
 {/* xs:"320px",
         sm:"375px",

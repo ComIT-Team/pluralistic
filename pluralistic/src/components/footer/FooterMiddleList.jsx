@@ -6,7 +6,7 @@ const FooterMiddleList = ({title,listItem}) => {
     <div className="w-full">
             <h3 className="font-titleFont text-white text-base font-semibold mb-3">{title}
             </h3>
-            <ul className="flex flex-col gap-2 font-bodyFont  ">
+            <ul className="flex flex-col gap-2 font-bodyFont px-8">
                {
 
                listItem.map((item)=>item.listData.map((data,i)=>(
