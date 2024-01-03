@@ -26,7 +26,7 @@ const Login = () => {
   }
   const handleUsername = (e) => {
     setUsername(e.target.value);
-    setErrUsernamel("")
+    setErrUsername("")
 
   }
   const handlePassword = (e) => {
@@ -69,7 +69,7 @@ const Login = () => {
     handleLoginClick();
     const user = {email, password,username }
    setLoading(true)
-    fetch("http://localhost:86/api/v1/auth/signin", {
+    fetch("http://3.145.11.221:80/api/v1/auth/signin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user)
