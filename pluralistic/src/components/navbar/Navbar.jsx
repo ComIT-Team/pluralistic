@@ -6,11 +6,14 @@ import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import Products from '../Products'
 import SellerLogin from "../signup/SellerLogin";
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useRef, useState } from "react"
 import SideNav from "./SideNav";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { userSignOut } from '../../redux/cartSlice';
+ 
 //import Home from "../Home"
+
 const Navbar = () => {
   const userInfo = useSelector((state) => state.cart.userInfo);
   const [sideBar, setSideBar]= useState(false);
@@ -23,6 +26,13 @@ if(e.target.contains(ref.current)){
 
     },[ref,sideBar])
   })
+  const dispatch = useDispatch()
+    const navigate = useNavigate()
+  const handleLogout=() =>{
+    dispatch(userSignOut())
+console.log("user signed out")
+    navigate("/")
+ }
   return (
     <div className="w-full px-4  h-[36px]   bg-indigo-900 text-white flex items-center ">
 {/* <Link to='/' element={Home}><h1 className='font-bold text-white no-underline text-xl'>Pluralistic</h1></Link> */}
@@ -105,10 +115,10 @@ if(e.target.contains(ref.current)){
                   one="Your Account"
                   two="Customer Service"
                 />
-                {userInfo ? (<Link to ="/logout"> <li className="flex items-center justify-between hover:bg-zinc-200 px-6 py-2 cursor-pointer font-bold "> 
+                {userInfo ? ( <li onClick ={handleLogout}className="flex items-center justify-between hover:bg-zinc-200 px-6 py-2 cursor-pointer font-bold "> 
         Sign Out
         {/* <span><KeyboardArrowRightRoundedIcon/></span> */}
-      </li></Link>): <div></div>}
+      </li>): <div></div>}
               <span onClick={() => setSideBar(false)} className="cursor-pointer absolute top-0 left-[84%] md:left-[275px] w-10 h-10 text-black flex items-center justify-center border bg-gray-200 hover:bg-red-700 hover:text-white duration-300">
 
               <CloseOutlinedIcon/>

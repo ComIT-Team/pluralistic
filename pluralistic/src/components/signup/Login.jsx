@@ -111,22 +111,6 @@ const Login = () => {
       console.log("welcome user")
 
     })
-    
-
-    //   try{
-    //    const response = await axios.post("http://localhost:86/api/v1/auth/signin",JSON.stringify({
-    //     email: email,
-    //     password: password}),
-    //     {
-    //       headers:{'Content-Type':'application/json'}
-    //     });
-    //     console.log(response.data);
-    //     console.log(email)
-    //     navigate("/home");
-    // }
-    //    catch(err){
-    //     alert(err)
-    //    }
 
   }
 
@@ -138,7 +122,7 @@ const Login = () => {
           <div
             className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
             <div
-              className="shrink-1 mb-12 grow-0 basis-auto md:mb-0 md:w-9/12 md:shrink-0 lg:w-6/12 xl:w-6/12">
+              className="shrink-1 mb-4 grow-0 basis-auto md:mb-0 md:w-9/12 md:shrink-0 lg:w-6/12 xl:w-6/12">
               <img
                 src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
                 className="w-full"

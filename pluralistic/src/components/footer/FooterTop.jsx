@@ -5,7 +5,7 @@ const FooterTop = () => {
     <div className="w-full bg-white py-4 bg-opacity-10" >
         <div className="w-full   border-b-[1px] py-6 my-2">
            <div className="w-64 mx-auto text-center flex flex-col gap-1">
-            <p className="text-sm text-black">See Personalized Recommendations
+            <p className="text-sm text-black mt-2 p-6">See Personalized Recommendations
             </p>
             <Link to="/login" element={Login}>    
             {/* //////need onclick */}
