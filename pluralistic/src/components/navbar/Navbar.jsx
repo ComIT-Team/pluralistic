@@ -89,6 +89,7 @@ if(e.target.contains(ref.current)){
                   )
                 }
                 </div>
+                <Link to ='/products'><h3 className='text-lg border-b-[1px] border-b-gray-300 font-titleFont font-semibold mb-2 mx-2 mt-4 px-6'> Browse All Categories  </h3></Link>
                 <SideNav
                   title="Shop By Department"
                   one="Electronics"
@@ -104,6 +105,10 @@ if(e.target.contains(ref.current)){
                   one="Your Account"
                   two="Customer Service"
                 />
+                {userInfo ? (<Link to ="/logout"> <li className="flex items-center justify-between hover:bg-zinc-200 px-6 py-2 cursor-pointer font-bold "> 
+        Sign Out
+        {/* <span><KeyboardArrowRightRoundedIcon/></span> */}
+      </li></Link>): <div></div>}
               <span onClick={() => setSideBar(false)} className="cursor-pointer absolute top-0 left-[84%] md:left-[275px] w-10 h-10 text-black flex items-center justify-center border bg-gray-200 hover:bg-red-700 hover:text-white duration-300">
 
               <CloseOutlinedIcon/>
