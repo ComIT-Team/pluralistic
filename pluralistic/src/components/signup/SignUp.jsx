@@ -81,7 +81,7 @@ const SignUp = () => {
   handleRegistration();
 try{
 setLoading(true)
-  await axios.post("https://3.145.11.221:8443/api/v1/auth/signup",{
+  await axios.post("http://3.145.11.221:80/api/v1/auth/signup",{
     username:firstName,
   firstName:firstName ,
   email: email,
@@ -197,11 +197,11 @@ setErr("Email Already in use, please try another one")
                       className=" peer block min-h-[auto] w-full border-0 rounded px-3 py-[0.32rem] leading-[2.15] mb-3 outline-double outline-white text-white  focus:outline-none focus:ring-1 focus:ring-black focus:border-black placeholder-transparent bg-transparent "
                       id="exampleInput123"
                       required
-                      placeholder="First name" />
+                      placeholder=" Username" />
                     <label
                       htmlFor="emailHelp123"
                       className="absolute left-3 -top-3.5 text-white transition-all ease-out peer-placeholder-shown:text-base peer-placeholder-shown:text-neutral-500 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm"
-                    >First Name
+                    >UserName
                     </label>
                     {errClientName && (
 
@@ -216,11 +216,11 @@ setErr("Email Already in use, please try another one")
                       className="peer block min-h-[auto] w-full border-0 rounded px-3 py-[0.32rem] leading-[2.15] mb-3 outline-double outline-white text-white  focus:outline-none focus:ring-1 focus:ring-black focus:border-black placeholder-transparent bg-transparent"
                       id="exampleInput124"
                       required
-                      placeholder="Last name" />
+                      placeholder="Full Name" />
                     <label
                       htmlFor="exampleInput124"
                       className="absolute left-3 -top-3.5 text-white transition-all ease-out peer-placeholder-shown:text-base peer-placeholder-shown:text-neutral-500 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm"
-                    >Last name
+                    >Full Name
                     </label>
                     {errLName && (
 

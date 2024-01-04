@@ -83,7 +83,7 @@ if(e.target.contains(ref.current)){
                 <AccountCircleRoundedIcon/>
                 {
                   userInfo ? (
-                    <h3 className=' font-titleFont font-bold text-lg tracking-wide' > {userInfo.email}</h3>
+                    <h3 className=' font-titleFont font-bold text-lg tracking-wide' > {userInfo.userName}</h3>
                   ):(
                     <h3 className=' font-titleFont font-bold text-lg tracking-wide' > Hello, Sign In</h3>
                   )

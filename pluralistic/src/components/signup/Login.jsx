@@ -2,16 +2,16 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ColorRing } from 'react-loader-spinner'
-
 import SignUp from './SignUp'
 import { useState } from 'react'
 import {useDispatch} from 'react-redux'
 import { setUserInfo } from '../../redux/cartSlice'
 const Login = () => {
   const [email, setEmail] = useState("");
-  const [userName, setUserName] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [errEmail, setErrEmail] = useState("")
+  const [errEmail, setErrEmail] = useState("");
+  const [errUsername, setErrUsername] = useState("")
   const [errPassword, setErrPassword] = useState("")
   const [loading, setLoading] = useState(false)
   const [successMsg, setSuccessMsg] = useState("")
@@ -22,6 +22,11 @@ const Login = () => {
   const handleEmail = (e) => {
     setEmail(e.target.value);
     setErrEmail("")
+
+  }
+  const handleUsername = (e) => {
+    setUsername(e.target.value);
+    setErrUsername("")
 
   }
   const handlePassword = (e) => {
@@ -35,7 +40,9 @@ const Login = () => {
     return String(email).toLowerCase().match(/^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$/gm);
   }
   const handleLoginClick = () => {
-
+    if (!username){
+      setUsername("Enter your username")
+    }
     if (!email) {
       setErrEmail("Enter your email")
     } else {
@@ -50,35 +57,40 @@ const Login = () => {
         setErrPassword("Password must be at least 6 characters")
       }
     }
-    if (email && password) {
+    if (email && password && username) {
       setEmail("");
-      setPassword("")
+      setPassword("");
+      setUsername("")
     }
   }
 
   const loginClick = (e) => {
     e.preventDefault()
     handleLoginClick();
-    const user = {email, password,userName }
+    const user = {email, password,username }
    setLoading(true)
-    fetch("https://3.145.11.221:8443/api/v1/auth/signin", {
+    fetch("http://3.145.11.221:80/api/v1/auth/signin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user)
     }).then((response) => {
-      
+      console.log("response",response.result)
+      console.log("response",response.token)
+      console.log("response",response.headers)
       if (response.status === 200) {
-        return Promise.all([response.json(), response.headers]),
+        return Promise.all([response.json(), response.headers])
+          
+        ,
         dispatch(setUserInfo({
           _id:user.idUser,
-          firstName:user.userName,
+          userName:user.username,
           email:user.email,
         })),
         
         setLoading(false),
           setSuccessMsg("Logged in successfully! Welcome to Pluralistic"),
           setTimeout(() => {
-            navigate("/home")
+            navigate("/")
           }, 2000)
          
         }
@@ -87,9 +99,11 @@ const Login = () => {
           setSuccessMsg("Invalid login attempt"),
           setLoading(false)
       }
-     
+  
+      
+      
     })
-    //.then((data)=> console.log(data))
+    
     .catch((message) => {
       alert(message)
       // setting errors for wrong email and password pending>>>
@@ -97,6 +111,8 @@ const Login = () => {
       console.log("welcome user")
 
     })
+    
+
     //   try{
     //    const response = await axios.post("http://localhost:86/api/v1/auth/signin",JSON.stringify({
     //     email: email,
@@ -197,6 +213,27 @@ const Login = () => {
                       </p>
                     </div>
 
+                  {/* USERNAME */}
+                  <div className="relative mb-6" data-te-input-wrapper-init>
+                      <input required
+                        type="email" name="email" value={username} onChange={handleUsername}
+                        className="peer block min-h-[auto] w-full rounded px-3 py-[0.32rem] leading-[2.15] mb-3 outline-none outline-white text-white  focus:outline-none focus:ring-white
+              focus:ring-1 placeholder-transparent bg-transparent"
+                        id="exampleFormControlInput2"
+                        placeholder="UserName" />
+                      <label
+                        htmlFor="exampleFormControlInput2"
+                        className="absolute left-3 -top-3.5 text-black transition-all ease-out peer-placeholder-shown:text-base peer-placeholder-shown:text-neutral-500 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-black-900 peer-focus:text-sm"
+                      >UserName
+                      </label>
+                      {
+                        errUsername && (
+
+                          <p className="text-red-600 text-xs font-semibold tracking-wide flex items-center gap-2 -mt-1.5">
+                            <span className="italic font-titleFont font-extrabold text-base">!</  span>{errUsername}</p>
+                        )
+                      }
+                    </div>
                     {/* <!-- Email input --> */}
                     <div className="relative mb-6" data-te-input-wrapper-init>
                       <input required
