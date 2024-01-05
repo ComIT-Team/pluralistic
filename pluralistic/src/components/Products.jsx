@@ -1,7 +1,12 @@
 
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import FormLabel from '@mui/material/FormLabel';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
 import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone';
-
+import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/cartSlice";
 
@@ -62,6 +67,26 @@ const filters = [
       { value: '40l', label: '40L', checked: true },
     ],
   },
+];
+ const singleFilter =[
+  {
+    id:"price",
+    name:"Price",
+    options:[
+      {value:"5-20", label:"$5 To $20"},
+      {value:"21-60", label:"$21 To $60"},
+      {value:"61-200", label:"$61 To $200"},
+      {value:"201-1000", label:"$201 To $1000"},
+    ],
+  },
+  {
+    id:"stock",
+    name:"Availability",
+    options:[
+      {value:"in_stock", label:"In Stock"},
+      {value:"out_of_stock", label:"Out Of Stock"},
+    ]
+  }
 ]
 
 function classNames(...classes) {
@@ -247,6 +272,11 @@ export default function Products() {
 
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5 -ml-20">
               {/* Filters */}
+              <div>
+              <div className='flex justify-between  text-black opacity-60 '>
+                <h2 className='text-lg font-bold'>Filters</h2>
+                <FilterAltOutlinedIcon/>
+              </div>
               <form className="hidden lg:block">
                 <h3 className="sr-only">Categories</h3>
                 <ul role="list" className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
@@ -299,7 +329,51 @@ export default function Products() {
                     )}
                   </Disclosure>
                 ))}
+                {singleFilter.map((section) => (
+                  <Disclosure as="div" key={section.id} className="border-b border-gray-200 py-6">
+                    {({ open }) => (
+                     <>
+                        <h3 className="-my-3 flow-root">
+                          <Disclosure.Button className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
+
+                            {/* <span className="font-medium text-gray-900"></span> */}
+                            <FormLabel className="text-black" id="demo-radio-buttons-group-label">{section.name}</FormLabel>
+                            <span className="ml-6 flex items-center">
+                              {open ? (
+                                <MinusIcon className="h-5 w-5" aria-hidden="true" />
+                              ) : (
+                                <PlusIcon className="h-5 w-5" aria-hidden="true" />
+                              )}
+                            </span>
+                          </Disclosure.Button>
+                        </h3>
+                        <Disclosure.Panel className="pt-6">
+                          <div className="space-y-4 text-gray-900">
+                          <FormControl>
+                          <RadioGroup
+    aria-labelledby="demo-radio-buttons-group-label"
+    defaultValue="female"
+    name="radio-buttons-group"
+  >
+                            {section.options.map((option, optionIdx) => (
+                              
+  
+  <>
+    <FormControlLabel value={option.id} control={<Radio />} label={option.label} />
+    
+    </>
+
+                            ))}
+                            </RadioGroup>
+                        </FormControl>
+                          </div>
+                        </Disclosure.Panel>
+                        </>
+                    )}
+                  </Disclosure>
+                ))}
               </form>
+              </div>
 
               {/* Product grid */}
               <div className="lg:col-span-4">
