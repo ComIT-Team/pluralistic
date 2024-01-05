@@ -98,12 +98,12 @@ const Banner = () => {
   return (
    
         
-        <div className="w-full relative  mx-auto">
+        <div className="w-full relative mx-auto">
         <Carousel autoPlay infiniteLoop showStatus={false}
         showIndicators={false}
         showThumbs={false}
         interval={3000}>
-                <div>
+                <div className=''>
                     <img src={banner1} alt="banner1" />
                     
                 </div>
@@ -112,7 +112,7 @@ const Banner = () => {
                     
                 </div>
                 <div>
-                    <img src={banner3} alt="banner3" />
+                    <img  src={banner3} alt="banner3" />
                     
                 </div>
                 <div>

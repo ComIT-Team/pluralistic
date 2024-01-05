@@ -2,10 +2,10 @@
 
 const Cards = () => {
   return (
-    <div className="max-w-[1680px] mx-auto grid md:grid-cols-3 gap-6 -mt-8 py-4 px-6 bg-opacity-50">
-        <div className=''>
-            <div className='rounded-xl absolute w-full h-full bg-black/50 text-white p-4 '>
-                <h2 className='font-bold text-2xl'>Groceries</h2>
+    <div className="max-w-[1680px] mx-auto grid md:grid-cols-3 gap-6 -mt-28 py-4 px-6 bg-opacity-50">
+        <div className='relative'>
+            <div className='rounded-xl absolute w-full h-full text-white p-4 '>
+                <h2 className='font-bold text-2xl '>Groceries</h2>
                 {/* <p>Experience the vibrant goodness of nature with our <span className='text-rose-500'>fresh
                 </span>, <span className='text-rose-500'>hand-picked</span> fruits and vegetables</p> */}
                 <button className='rounded-xl bg-rose-500/60 text-white p-1 m-2 absolute bottom-4 '>Order Now</button>

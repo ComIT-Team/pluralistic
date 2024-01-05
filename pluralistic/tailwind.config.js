@@ -38,7 +38,9 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+     ('@tailwindcss/forms'),
+  ],
 };
 
 //const plugin = require('tailwindcss/plugin')

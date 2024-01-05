@@ -90,6 +90,18 @@ console.log("user signed out")
         <p className='text-sm font-semibold -mt-1 text-whiteText'>& Orders</p>
         </div>
     {/*  ===========Orders End here=========== */}
+    {/* Country choice---- */}
+    <div className=" px-4 py-6">
+                  <a href="#" className=" flex items-center p-2">
+                    <img
+                      src="https://tailwindui.com/img/flags/flag-canada.svg"
+                      alt=""
+                      className="block h-auto w-5 flex-shrink-0"
+                    />
+                    <span className="ml-3 block text-sm font-medium text-whiteText">CAD</span>
+                    <span className="sr-only">, change currency</span>
+                  </a>
+                </div>
     {/* ===========Cart start here ===========*/}
         <Link to="/cart">
         <div className='flex items-start justify-center headerHover relative'>
