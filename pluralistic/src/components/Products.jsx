@@ -245,7 +245,7 @@ export default function Products() {
               Products
             </h2>
 
-            <div className="grid grid-cols-1 gap-x-6 gap-y-10 lg:grid-cols-7 -ml-20">
+            <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5 -ml-20">
               {/* Filters */}
               <form className="hidden lg:block">
                 <h3 className="sr-only">Categories</h3>
@@ -302,8 +302,8 @@ export default function Products() {
               </form>
 
               {/* Product grid */}
-              <div className="lg:col-span-6">
-              <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 px-4 py-6">{productData.map((item) => (
+              <div className="lg:col-span-4">
+              <div className="max-w-screen-2xl mx-auto ml-20  grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 px-4 py-6">{productData.map((item) => (
       <div key ={item.index} className="bg-white h-auto w-full border-[1px] border-gray-300 py-6  hover:border-transparent shadow-none hover:shadow-textShadow duration-200 relative rounded-lg group overflow-hidden">
 <div className="w-full h-auto flex items-center justify-center relative">
   <img className="w-52 h-64 object-contain scale-90 hover:scale-100 transition-transform duration-300" src={item.image}  alt ="productImage"/>
@@ -319,13 +319,13 @@ export default function Products() {
 </div>
 
 <hr/>
-<div className="text-black px-4 py-3 flex flex-col gap-1">
+<div className="text-black px-4  py-3 flex flex-col gap-1">
   <h2 className=" font-medium ">{item.title.substring(0,20)}</h2>
   <p className="font-semibold ">${item.price}</p>
 </div>
 <div>
-  <p className=" text-xs text-gray-600 text-justify px-2">{item.description.substring(0,100)}...</p>
-  <button className="h-10  w-[18rem] xl:w-[12rem] mx-8 mt-2  sml:w-[22rem] md:w-[18rem]  lgl:w-[28rem] font-medium bg-indigo-600 text-white items-center justify-center rounded-md hover:bg-purple-700 duration-300"
+  <p className=" text-xs text-gray-600 text-justify px-2">{item.description.substring(0,80)}...</p>
+  <button className="h-10  w-[12rem] mx-12 xl:w-[10rem] lg:mx-8 mt-2  sml:w-[22rem] md:w-[18rem]  lgl:w-[28rem] font-medium bg-indigo-600 text-white items-center justify-center rounded-md hover:bg-purple-700 duration-300"
   onClick={()=>dispatch(addToCart({
     id:item.id,
     title:item.title,
